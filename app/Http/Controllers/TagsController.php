@@ -46,7 +46,7 @@ class TagsController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->delete($tag);
-        session()->flash('success', 'Tag foi excluída com sucessa!');
+        session()->flash('success', 'Tag foi excluída com sucesso!');
         return redirect(route('tag.index'));
     }
 

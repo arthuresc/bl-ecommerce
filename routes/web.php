@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\TagsGroupsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,3 +17,7 @@ Route::patch('/product/restore/{id}', [ProductsController::class, 'restore'])->n
 Route::resource('/tag', TagsController::class);
 Route::get('/trash/tag', [TagsController::class, 'trash'])->name('tag.trash');
 Route::patch('/tag/restore/{id}', [TagsController::class, 'restore'])->name('tag.restore');
+
+Route::resource('/tagGroup', TagsGroupsController::class);
+Route::get('/trash/tagGroup', [TagsGroupsController::class, 'trash'])->name('tagGroup.trash');
+Route::patch('/tagGroup/restore/{id}', [TagsGroupsController::class, 'restore'])->name('tagGroup.restore');
