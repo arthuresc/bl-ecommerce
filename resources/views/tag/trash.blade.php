@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script>
         function restaurar() {
-            return confirm('Você deseja restaurar o produto?')
+            return confirm('Você deseja restaurar a tag?')
         }
     </script>
     <title>Brindes de luxo</title>
@@ -23,8 +23,8 @@
             @endif
 
             <div>
-                <h1 class="mx-5">Lista de produtos apagados</h1>
-                <a href="{{ Route('product.index') }}" class="btn btn-sm btn-primary mx-5">Voltar</a>
+                <h1 class="mx-5">Lista de tags apagadas</h1>
+                <a href="{{ Route('tag.index') }}" class="btn btn-sm btn-primary mx-5">Voltar</a>
             </div>
 
             <div class="row mx-5">
@@ -32,29 +32,16 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Imagem</th>
-                            <th>Qtd imagens</th>
                             <th>Nome</th>
-                            <th>Descrição</th>
-                            <th>Preço</th>
-                            <th>Quantidade</th>
-                            <th>Quantidade mínima</th>
-                            <th>Opções</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($products as $product)
+                        @foreach($tags as $tag)
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td><img src="{{ asset($product->mainImage) }}" width="50px"></td>
-                            <td>{{ substr_count($product->arrayImages, 'storage')}}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->description }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->quantity }}</td>
-                            <td>{{ $product->minQuantity }}</td>
+                            <td>{{ $tag->id }}</td>
+                            <td>{{ $tag->name }}</td>
                             <td>
-                                <form action="{{ route('product.restore', $product->id ) }}" method="POST" class="d-inline" onsubmit="return restaurar()">
+                                <form action="{{ route('tag.restore', $tag->id ) }}" method="POST" class="d-inline" onsubmit="return restaurar()">
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" class="btn btn-sm btn-success">Restaurar</button>
@@ -65,7 +52,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </main>
 </body>

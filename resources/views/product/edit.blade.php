@@ -8,6 +8,7 @@
     <title>Brindes de luxo</title>
 </head>
 <body>
+    @include('layouts.header.nav')
     <main>
         <div class="container m-5">
             <h1>Editar produto</h1>
