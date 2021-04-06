@@ -22,9 +22,18 @@ class TagsGroupsController extends Controller
     {
         TagGroup::create($request->all());
         
-        session()->flash('success', 'Grupo de tags foi alterado com sucesso!');
+        session()->flash('success', 'Grupo de tags foi criado com sucesso!');
         return redirect(route('tagGroup.index'));
     }
+
+    public function storeFromTag(Request $request)
+    {
+        TagGroup::create([
+            'name'=>$request->new_tag_name,
+        ]);
+        session()->flash('success', 'Grupo de tags foi criado com sucesso!');
+        return redirect(route('tag.create'));
+    }  
 
     public function show(TagGroup $tagGroup)
     {

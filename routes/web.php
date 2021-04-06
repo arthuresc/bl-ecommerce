@@ -19,6 +19,7 @@ Route::get('/trash/tag', [TagsController::class, 'trash'])->name('tag.trash');
 Route::patch('/tag/restore/{id}', [TagsController::class, 'restore'])->name('tag.restore');
 
 Route::resource('/tagGroup', TagsGroupsController::class);
+Route::post('/tagGroup', [TagsGroupsController::class, 'storeFromTag'])->name('tagGroup.storeFromTag');
 Route::get('/trash/tagGroup', [TagsGroupsController::class, 'trash'])->name('tagGroup.trash');
 Route::patch('/tagGroup/restore/{id}', [TagsGroupsController::class, 'restore'])->name('tagGroup.restore');
 

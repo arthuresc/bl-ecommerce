@@ -16,6 +16,17 @@
             @CSRF
 
             <div class="row form-group mb-2">
+                <label class="form-label" for="tag_group_id">Grupo da Tag</label>
+                <select class="form-control" name="tag_group_id" id="tag-group" required>
+                    @foreach ($tagsGroups as $tagGroup)
+                        <option value="{{ $tagGroup->id }}">{{ $tagGroup->name }} </option>
+                    @endforeach
+                </select>
+                <!-- COLOCAR LINK QUE DIRECIONA PARA A CRIAÇÃO DE TAG -->
+                <p class='font-weight-light'>Não encontrou a tag desejada?</p>
+            </div>
+
+            <div class="row form-group mb-2">
                 <label class="form-label" for="name">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Nome da tag" class="form-control" required>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\TagGroup;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
@@ -15,7 +16,7 @@ class TagsController extends Controller
 
     public function create()
     {
-        return view('tag.create');
+        return view('tag.create')->with('tagsGroups', TagGroup::all());
     }
 
     public function store(Request $request)

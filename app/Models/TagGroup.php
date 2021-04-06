@@ -12,4 +12,8 @@ class TagGroup extends Model
     use SoftDeletes;
 
     protected $fillable = ['name'];
+
+    public function tags() {
+        return $this->hasMany(Tag::class);
+    }
 }
