@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\TagGroup;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
@@ -15,15 +16,24 @@ class TagsController extends Controller
 
     public function create()
     {
-        return view('tag.create');
+        return view('tag.create')->with('tagsGroups', TagGroup::all());
     }
 
     public function store(Request $request)
     {
-        Tag::create($request->all());
-        
-        session()->flash('success', 'Tag foi alterada com sucesso!');
-        return redirect(route('tag.index'));
+        if ($request->has('addNewTag')) {
+            Tag::create($request->all());
+            
+            session()->flash('success', 'Tag foi alterada com sucesso!');
+            return redirect(route('tag.index'));
+        }
+
+        if ($request->has('addNewTagGroup')) {
+            TagGroup::create($request->all());
+            session()->flash('success', 'Grupo de tags foi adicionado com sucesso!');
+            return redirect(route('tag.create'));
+        }
+
     }
 
     public function show(Tag $tag)
@@ -33,7 +43,7 @@ class TagsController extends Controller
 
     public function edit(Tag $tag)
     {
-        return view('tag.edit')->with('tag', $tag);
+        return view('tag.edit')->with(['tag'=>$tag, 'tagsGroups'=>TagGroup::all()]);
     }
 
     public function update(Request $request, Tag $tag)

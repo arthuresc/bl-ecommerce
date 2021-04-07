@@ -34,6 +34,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
+                            <th>Grupo da Tag</th>
                             <th>Opções</th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                         <tr>
                             <td>{{ $tag->id }}</td>
                             <td>{{ $tag->name }}</td>
+                            <td>{{ $tag->taggroup->name }}</td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-primary"> Visualizar </a>
                                 <a href="{{ route('tag.edit', $tag->id) }}" class="btn btn-sm btn-warning"> Editar </a>
