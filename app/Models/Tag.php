@@ -11,5 +11,9 @@ class Tag extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'tag_group_id'];
+
+    public function tagGroup() {
+        return $this->belongsTo(TagGroup::class)->withTrashed();
+    }
 }

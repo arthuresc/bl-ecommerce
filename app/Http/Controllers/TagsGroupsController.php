@@ -22,7 +22,7 @@ class TagsGroupsController extends Controller
     {
         TagGroup::create($request->all());
         
-        session()->flash('success', 'Grupo de tags foi alterado com sucesso!');
+        session()->flash('success', 'Grupo de tags foi criado com sucesso!');
         return redirect(route('tagGroup.index'));
     }
 
@@ -45,6 +45,7 @@ class TagsGroupsController extends Controller
 
     public function destroy(TagGroup $tagGroup)
     {
+        $tagGroup->tags()->delete();
         $tagGroup->delete($tagGroup);
         session()->flash('success', 'Grupo de tags foi excluído com sucesso!');
         return redirect(route('tagGroup.index'));
