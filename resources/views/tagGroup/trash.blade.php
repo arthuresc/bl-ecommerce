@@ -33,6 +33,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
+                            <th>Opções</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -45,6 +45,7 @@ class TagsGroupsController extends Controller
 
     public function destroy(TagGroup $tagGroup)
     {
+        $tagGroup->tags()->delete();
         $tagGroup->delete($tagGroup);
         session()->flash('success', 'Grupo de tags foi excluído com sucesso!');
         return redirect(route('tagGroup.index'));

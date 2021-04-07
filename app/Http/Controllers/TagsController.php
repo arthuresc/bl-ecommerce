@@ -65,7 +65,12 @@ class TagsController extends Controller
     }
 
     public function restore($id) {
+        
         $tag = Tag::onlyTrashed()->where('id', $id)->firstOrFail();
+        $tagGroup = TagGroup::onlyTrashed()->where('id', $tag->tag_group_id);
+        if ($tagGroup) {
+            $tagGroup->restore();
+        }
         $tag->restore();
         session()->flash('success', 'Tag restaurada com sucesso!');
         return redirect(route('tag.trash'));

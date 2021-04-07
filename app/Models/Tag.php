@@ -14,6 +14,6 @@ class Tag extends Model
     protected $fillable = ['name', 'tag_group_id'];
 
     public function tagGroup() {
-        return $this->belongsTo(TagGroup::class);
+        return $this->belongsTo(TagGroup::class)->withTrashed();
     }
 }

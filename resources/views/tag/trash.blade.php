@@ -34,6 +34,7 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Grupo da Tag</th>
+                            <th>Opções</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,7 +42,7 @@
                         <tr>
                             <td>{{ $tag->id }}</td>
                             <td>{{ $tag->name }}</td>
-                            <td>{{ $tag->taggroup->name }}</td>
+                            <td>{{ $tag->tagGroup->name }}</td>
                             <td>
                                 <form action="{{ route('tag.restore', $tag->id ) }}" method="POST" class="d-inline" onsubmit="return restaurar()">
                                     @csrf
