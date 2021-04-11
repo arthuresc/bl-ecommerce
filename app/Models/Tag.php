@@ -16,4 +16,8 @@ class Tag extends Model
     public function tagGroup() {
         return $this->belongsTo(TagGroup::class)->withTrashed();
     }
+
+    public function products() {
+        return $this->belongsToMany(Product::class);
+    }
 }

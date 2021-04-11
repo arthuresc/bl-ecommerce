@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Tag;
 
 class ProductsController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('product.create');
+        return view('product.create')->with('tags', Tag::all()->sortBy('name'));
     }
 
     public function store(Request $request)
@@ -33,7 +34,7 @@ class ProductsController extends Controller
 
         $arrayImagesJson = json_encode($arrayImagesJson);
 
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
@@ -42,6 +43,8 @@ class ProductsController extends Controller
             'mainImage' => $mainImage,
             'arrayImages' => $arrayImagesJson,
         ]);
+
+        $product->tags()->sync($request->tags);
         
         session()->flash('success', 'Produto cadastrado com sucesso');
         return redirect(route('product.index'));
@@ -54,7 +57,11 @@ class ProductsController extends Controller
 
     public function edit(Product $product)
     {
-        return view('product.edit')->with('product', $product);
+        return view('product.edit')->with([
+            'product'=>$product, 
+            'selectedTags'=>$product->tags->sortBy('name'),
+            'allTags'=>Tag::all()->sortBy('name')
+        ]);
     }
 
     public function update(Request $request, Product $product)
@@ -82,6 +89,8 @@ class ProductsController extends Controller
             'mainImage' => $mainImage,
             'arrayImages' => $arrayImagesJson,
         ]);
+
+        $product->tags()->sync($request->tags);
         
         session()->flash('success', 'Produto editado com sucesso');
         return redirect(route('product.index'));
