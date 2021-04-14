@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\TagsController;
+use App\Http\Controllers\TagsGroupsController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +25,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+//Products
 Route::resource('/product', ProductsController::class);
 Route::get('/trash/product', [ProductsController::class, 'trash'])->name('product.trash');
 Route::patch('/product/restore/{id}', [ProductsController::class, 'restore'])->name('product.restore');
