@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Tag;
 
 class ProductsController extends Controller
@@ -15,7 +16,7 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('product.create')->with('tags', Tag::all()->sortBy('name'));
+        return view('product.create')->with(['categories' => Category::all(), 'tags' => Tag::all()->sortBy('name')]);
     }
 
     public function store(Request $request)
@@ -42,6 +43,7 @@ class ProductsController extends Controller
             'minQuantity' => $request->minQuantity,
             'mainImage' => $mainImage,
             'arrayImages' => $arrayImagesJson,
+            'category_id' => $request->category_id,
         ]);
 
         $product->tags()->sync($request->tags);

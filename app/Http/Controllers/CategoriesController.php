@@ -23,7 +23,7 @@ class CategoriesController extends Controller
     {
         Category::create($request->all());
         
-        session()->flash('success', 'Categoria foi alterada com sucesso!');
+        session()->flash('success', 'Categoria foi criada com sucesso!');
         return redirect(route('category.index'));
     }
 

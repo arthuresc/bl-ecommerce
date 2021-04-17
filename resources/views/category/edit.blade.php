@@ -19,16 +19,11 @@
                     <label class="form-label" for="name">Nome (requerido)</label>
                     <input type="text" name="name" id="name" placeholder="Nome da categoria" class="form-control" value="{{ $category->name }}" required>
                 </div>
-                <div class="row form-group mb-2">
-                    <label class="form-label" for="description">Descrição (opcional)</label>
-                    <input type="text" name="description" id="description" placeholder="Descrição da categoria" class="form-control" value="{{ $category->description }}">
-                </div>
-                </div>
                 <div class="row col-2">
                     <button type="submit" class="btn btn-md btn-success mt-3"> Salvar </button>
                 </div>
             </form>
-        </div>q
+        </div>
     </main>
 </body>
 </html>

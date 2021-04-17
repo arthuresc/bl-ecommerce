@@ -34,20 +34,14 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
-
+                            <th>Opções</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($categories as $category)
                         <tr>
-                            <td>{{ $categories->id }}</td>
-                            <td><img src="{{ asset($category->mainImage) }}" width="70px"></td>
-                            <td>{{ substr_count($category->arrayImages, 'storage')}}</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->description }}</td>
-                            <td>{{ $category->price }}</td>
-                            <td>{{ $category->quantity }}</td>
-                            <td>{{ $category->minQuantity }}</td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->name }} ({{ $category->products->count() }})</td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-primary"> Visualizar </a>
                                 <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-warning"> Editar </a>
