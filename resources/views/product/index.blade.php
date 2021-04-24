@@ -40,6 +40,7 @@
                             <th>Preço</th>
                             <th>Qtd</th>
                             <th>Qtd mínima</th>
+                            <th>Categoria</th>
                             <th>Opções</th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->quantity }}</td>
                             <td>{{ $product->minQuantity }}</td>
+                            <td>{{ $product->category->name }}</td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-primary"> Visualizar </a>
                                 <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-warning"> Editar </a>
@@ -65,6 +67,7 @@
                             </td>
                         </tr>
                         @endforeach
+
                     </tbody>
                 </table>
             </div>

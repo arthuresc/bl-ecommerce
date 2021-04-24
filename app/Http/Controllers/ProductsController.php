@@ -11,7 +11,7 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        return view('product.index')->with('products', Product::all());
+        return view('product.index')->with(['products' => Product::all(), 'categories' => Category::all()]);
     }
 
     public function create()
@@ -52,9 +52,9 @@ class ProductsController extends Controller
         return redirect(route('product.index'));
     }
 
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('product.show')->with('product', $product);
     }
 
     public function edit(Product $product)

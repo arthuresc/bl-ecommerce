@@ -40,12 +40,16 @@ class CategoriesController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        session()->flash('success', 'Categoria foi alterada com sucesso!');
+        session()->flash('danger', 'Categoria foi alterada com sucesso!');
         return redirect(route('category.index'));
     }
 
     public function destroy(Category $category)
     {
+        if ($category->products()->count() > 0) {
+            session()->flash('success', 'Você não pode deletar uma categoria que tenha produtos!');
+            return redirect(route('category.index'));
+        }
         $category->delete($category);
         session()->flash('success', 'Categoria foi excluída com sucesso!');
         return redirect(route('category.index'));
