@@ -32,6 +32,6 @@ class CreateTagsGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag_types');
+        Schema::dropIfExists('tag_groups');
     }
 }
