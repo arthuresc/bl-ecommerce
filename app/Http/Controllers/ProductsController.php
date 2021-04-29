@@ -44,6 +44,7 @@ class ProductsController extends Controller
             'mainImage' => $mainImage,
             'arrayImages' => $arrayImagesJson,
             'category_id' => $request->category_id,
+            'highlight' => ($request->highlight === 'true') ? 1 : 0
         ]);
 
         $product->tags()->sync($request->tags);
@@ -90,6 +91,7 @@ class ProductsController extends Controller
             'minQuantity' => $request->minQuantity,
             'mainImage' => $mainImage,
             'arrayImages' => $arrayImagesJson,
+            'highlight' => ($request->highlight === 'true') ? 1 : 0
         ]);
 
         $product->tags()->sync($request->tags);

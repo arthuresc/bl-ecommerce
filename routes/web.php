@@ -8,7 +8,7 @@ use App\Http\Controllers\CategoriesController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
