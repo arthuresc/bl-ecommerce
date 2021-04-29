@@ -19,7 +19,7 @@
             <a href="{{ Route('product.trash') }}" class='btn btn-sm btn-danger'>Lixeira</a>
         </div>
 
-        <div class="row">
+        <div class="row m-0">
             <table class="table table-striped w-100">
                 <thead>
                     <tr>

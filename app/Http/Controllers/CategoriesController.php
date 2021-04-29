@@ -29,8 +29,9 @@ class CategoriesController extends Controller
 
     public function show(Category $category)
     {
-        
+        return view('category.show')->with(['category' => $category, 'products' => $category->products()->paginate(9)]);
     }
+
 
     public function edit(Category $category)
     {
