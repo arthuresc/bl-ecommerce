@@ -1,34 +1,13 @@
-@extends('layouts.header');
-
-@section('css')
-<style>
-    #banner {
-        background: url('https://via.placeholder.com/2000x800');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        min-height: 400px;
-    }
-</style>
-@endsection
+@extends('layouts.structure.index')
 
 @section('content')
 
 <section>
-    <div class='row'>
-        <div class='my-2 text-center'>
-            <h2>Produtos em Promoção</h2>
-            <span class='text-muted'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, iure.</span>
-        </div>
-    </div>
-
-    <div class='row'>
-        @foreach (\App\Models\Product::promocoes() as $product)
-
-
+    <div class='row mt-5'>
+        @foreach (\App\Models\Product::highlights() as $product)
         <div class='col-10 col-md-6 col-lg-4 mx-auto mt-3'>
             <div class='text-center'>
-                <img src="{{ asset($product->image) }}" style='height: 200px;'>
+                <img src="{{ asset($product->mainImage) }}" style='height: 200px;'>
             </div>
             <div class='text-center mt-3'>
                 <span class='d-block'>{{ $product->name }}</span>
@@ -40,10 +19,9 @@
                 </div>
             </div>
         </div>
-
         @endforeach
-
     </div>
+
 </section>
 
 @endsection
