@@ -11,7 +11,7 @@
         </script>
         <title>Brindes de Luxo</title>
         @yield('script-scoped')
-        @yield('css-scoped')
+        @yield('css-scoped') 
     </head>
 
     <body class='vh-100 box-border mw-100'>
@@ -20,7 +20,7 @@
         </header>
 
         <main>
-
+            
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session()->get('success') }}
