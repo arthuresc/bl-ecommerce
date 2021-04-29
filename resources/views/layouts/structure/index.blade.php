@@ -14,7 +14,7 @@
         @yield('css-scoped')
     </head>
 
-    <body class='vh-100'>
+    <body class='vh-100 box-border mw-100'>
         <header>
             @include('layouts.header.nav')
         </header>
@@ -37,7 +37,7 @@
 
         </main>
 
-        <footer class="bg-primary mt-5 w-100 fixed-bottom">
+        <footer class="bg-dark text-light mt-5">
             Footer
         </footer>
 

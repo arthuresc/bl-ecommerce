@@ -38,7 +38,7 @@ class TagsController extends Controller
 
     public function show(Tag $tag)
     {
-        
+        return view('tag.show')->with(['tag' => $tag, 'products' => $tag->products()->paginate(9)]);
     }
 
     public function edit(Tag $tag)

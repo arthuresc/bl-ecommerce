@@ -3,8 +3,15 @@
 @section('content')
 
 <section>
-    <div class='row mt-5'>
-        @foreach (\App\Models\Product::highlights() as $product)
+    <div class='row m-0'>
+        <div class='my-2 text-center'>
+            <h2>{{ $tag->name }}</h2>
+        </div>
+    </div>
+
+    <div class='row m-0'>
+        @foreach ($tag->products()->paginate(9) as $product)
+
         <div class='col-10 col-md-6 col-lg-4 mx-auto mt-3'>
             <div class='text-center'>
                 <img src="{{ asset($product->mainImage) }}" style='height: 200px; width: 150px;'>
@@ -22,6 +29,9 @@
         @endforeach
     </div>
 
+    <div class='d-flex justify-content-center mt-5'>
+        {{ $products->links() }}
+    </div>
 </section>
 
 @endsection
