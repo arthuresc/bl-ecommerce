@@ -41,6 +41,7 @@
                             <th>Qtd</th>
                             <th>Qtd mínima</th>
                             <th>Categoria</th>
+                            <th>Destaque</th>
                             <th>Opções</th>
                         </tr>
                     </thead>
@@ -56,6 +57,7 @@
                             <td>{{ $product->quantity }}</td>
                             <td>{{ $product->minQuantity }}</td>
                             <td>{{ $product->category->name }}</td>
+                            <td>{{ $product->highlight }}</td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-primary"> Visualizar </a>
                                 <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-warning"> Editar </a>

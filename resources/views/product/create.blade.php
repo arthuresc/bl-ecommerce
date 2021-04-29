@@ -57,6 +57,14 @@
             <h1>Cadastrar produto</h1>
             <form method="post" action="{{ Route("product.store") }}" enctype="multipart/form-data" class="m-3">
                 @CSRF
+
+                <div class="row mb-2 p-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="highlight" id="highlight" class="form-check-input" value="true">
+                        <label class="form-check-label" for="highlight">Destacar</label>
+                    </div>
+                </div>
+
                 <div class="row form-group mb-2">
                     <label class="form-label" for="name">Nome (requerido)</label>
                     <input type="text" name="name" id="name" placeholder="Nome do produto" class="form-control" required>
