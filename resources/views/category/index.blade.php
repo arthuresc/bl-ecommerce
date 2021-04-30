@@ -25,6 +25,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Quantidade de produtos</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -32,9 +33,10 @@
                     @foreach($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }} ({{ $category->products->count() }})</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->products->count() }}</td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-primary"> Visualizar </a>
+                            <a href="{{ route('category.show', $category->id) }}" class="btn btn-sm btn-primary"> Visualizar </a>
                             <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-warning">
                                 Editar </a>
                             <form action="{{ route('category.destroy', $category->id ) }}" method="POST"
@@ -49,6 +51,5 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 @endsection

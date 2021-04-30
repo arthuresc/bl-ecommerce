@@ -11,15 +11,15 @@
 @endsection
 
 @section('content')
-    <div class="container m-5">
+    <div class="container my-5 ml-5">
 
-        <div>
+        <div class='ml-5'>
             <h1>Lista de Produtos</h1>
             <a href="{{ Route('product.create') }}" class="btn btn-sm btn-primary">Cadastrar</a>
             <a href="{{ Route('product.trash') }}" class='btn btn-sm btn-danger'>Lixeira</a>
         </div>
 
-        <div class="row m-0">
+        <div class="row ml-5">
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
@@ -48,7 +48,7 @@
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->minQuantity }}</td>
                         <td>{{ $product->category->name }}</td>
-                        <td>{{ $product->highlight }}</td>
+                        <td>{{ ($product->highlight === 1) ? 'Sim' : 'Não' }}</td>
                         <td>
                             <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm btn-primary"> Visualizar </a>
                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-warning">

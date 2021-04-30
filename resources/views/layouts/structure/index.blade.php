@@ -7,20 +7,25 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" defer>
         </script>
-        <title>Brindes de Luxo</title>
+
+        <script src="/js/domUtils.js" defer></script>
+        <link rel="stylesheet" href="/css/domUtils.css">
+
         @yield('script-scoped')
-        @yield('css-scoped')
+        @yield('css-scoped') 
+
+        <title>Brindes de Luxo</title>
     </head>
 
-    <body class='vh-100 box-border mw-100'>
+    <body class='mw-100'>
         <header>
             @include('layouts.header.nav')
         </header>
 
-        <main>
-
+        <main class='mh-100'>
+            
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session()->get('success') }}
@@ -37,7 +42,7 @@
 
         </main>
 
-        <footer class="bg-dark text-light mt-5">
+        <footer class="bg-dark text-light mt-5 p-4 w-100 text-center">
             Footer
         </footer>
 
