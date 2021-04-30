@@ -3,7 +3,7 @@
 @section('content')
 
 <section>
-    <div class='row mt-5'>
+    <div class='row mt-5 mx-0'>
         @foreach (\App\Models\Product::highlights() as $product)
         <div class='col-10 col-md-6 col-lg-4 mx-auto mt-3'>
             <div class='text-center'>
