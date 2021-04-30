@@ -14,7 +14,7 @@
                 <span class='text-decoration-line-through text-muted'>R$100,00</span>
                 <span class=''>{{ $product->price }}</span>
                 <div class='mt-3'>
-                    <a href='#' class='btn btn-secondary'>Visualizar</a>
+                    <a href='{{ route('product.show', $product->id) }}' class='btn btn-secondary'>Visualizar</a>
                     <a href='#' class='btn btn-primary'>Comprar</a>
                 </div>
             </div>
