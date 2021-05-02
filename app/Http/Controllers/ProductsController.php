@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\TagGroup;
 
 class ProductsController extends Controller
 {
@@ -28,7 +29,7 @@ class ProductsController extends Controller
         $arrayImagesJson = [];
         if($arrayImages) {
             foreach ($arrayImages as $key => $image) {
-                $image->store('arrayImageProduct');
+                $image = $image->store('arrayImageProduct');
                 $arrayImagesJson[$key] = "storage/" . $image;
             }
         }
@@ -55,13 +56,18 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
-        return view('product.show')->with('product', $product);
+        $colorTags = TagGroup::where('name', 'cores')->firstOrFail();
+        return view('product.show')->with([
+            'product' => $product, 
+            'colorTags' => Tag::where('tag_group_id', $colorTags->id)->get()
+        ]);
     }
 
     public function edit(Product $product)
     {
         return view('product.edit')->with([
             'product'=>$product, 
+            'categories'=>Category::all(),
             'selectedTags'=>$product->tags->sortBy('name'),
             'allTags'=>Tag::all()->sortBy('name')
         ]);
@@ -76,7 +82,7 @@ class ProductsController extends Controller
         $arrayImagesJson = [];
         if($arrayImages) {
             foreach ($arrayImages as $key => $image) {
-                $image->store('arrayImageProduct');
+                $image = $image->store('arrayImageProduct');
                 $arrayImagesJson[$key] = "storage/" . $image;
             }
         }

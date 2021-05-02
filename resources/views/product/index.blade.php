@@ -25,7 +25,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Imagem</th>
-                        <th>Imagens adicionais</th>
+                        <th>+ imagens</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Preço</th>
@@ -43,7 +43,7 @@
                         <td><img src="{{ asset($product->mainImage) }}" width="70px"></td>
                         <td>{{ substr_count($product->arrayImages, 'storage')}}</td>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td>{{ Str::limit($product->description, 15) }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->minQuantity }}</td>

@@ -84,8 +84,8 @@
             </div>
             <div class="row form-group mb-2">
                 <label class="form-label" for="description">Descrição (opcional)</label>
-                <input type="text" name="description" id="description" placeholder="Descrição do produto"
-                    class="form-control" value="{{ $product->description }}">
+                <textarea type="text" maxlength="255" name="description" id="description" placeholder="Descrição do produto"
+                    class="form-control">{{ $product->description }}</textarea>
             </div>
             <div class="row form-group mb-2">
                 <label class="form-label" for="price">Preço (requerido)</label>
@@ -101,6 +101,15 @@
                 <label class="form-label" for="minQuantity">Quantidade mínima (requerido)</label>
                 <input type="number" name="minQuantity" id="minQuantity" placeholder="Quantidade mínima para compra"
                     class="form-control" min="0" step="1" value="{{ $product->minQuantity }}" required>
+            </div>
+
+            <div class="row form-group mb-2">
+                <label class="form-label" for="category_id">Categoria (requerido)</label>
+                <select name="category_id" class="form-select">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="row form-group mb-2">
