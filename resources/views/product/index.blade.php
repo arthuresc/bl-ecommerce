@@ -20,7 +20,7 @@
         </div>
 
         <div class="row ml-5">
-            <table class="table table-striped w-100">
+            <table class="table table-striped w-100 align-middle">
                 <thead>
                     <tr>
                         <th>ID</th>

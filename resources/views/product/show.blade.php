@@ -17,16 +17,29 @@
         }
         .buyButton {
             color: #fff;
-            background-color: #F39322;
+        }
+        .mainImage {
+            height: 450px;
+            width: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            padding: 3px;
         }
         .arrayImagesBox {
             height: 90px;
             width: 100%;
+            background-position: center center;
             background-repeat: no-repeat;
-            background-position: center;
-            background-size: 100%;
+            object-fit: cover;
             padding: 3px;
         }
+        input[type=radio] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
         #Azul {
             background-color: #2E86C1;
         }
@@ -55,7 +68,7 @@
                     @endforeach
                 </div>
                 <div class="col-10">
-                    <img src="{{ asset($product->mainImage) }}" height="450px"/>
+                    <img src="{{ asset($product->mainImage) }}" class="mainImage" />
                 </div>
             </div>
             <div class="col-5 my-3">
@@ -72,19 +85,25 @@
                 <h3 class="my-2 h6">Cores:</h3>
                 <div class="d-block my-2">
                     @foreach ($colorTags as $tag)
-                        <a href="{{ route('tag.show', $tag->id) }}" id="{{$tag->name}}" class="btn colorButton"></a>
+                        <input type="radio" name="colorRadio" id="{{$tag->name}}" class="btn colorButton">
                     @endforeach
                 </div>
                 <div class="my-3 d-flex flex-direction-column align-content-center">
                     <input type="number" value="{{$product->minQuantity}}" min="{{$product->minQuantity}}" class="minQuantity">
                     <span>Pedido mínimo: {{$product->minQuantity}}</span>
                 </div>
-                <button class="btn buyButton my-2">Comprar</button>
+                <a href="" class="btn buyButton my-2 bg-success">Comprar</a>
                 <div class="d-block my-2">
                     @foreach ($product->tags as $tag)
                         <a href="{{ route('tag.show', $tag->id) }}" class="btn btn-light btn-sm">{{ $tag->name }}</a>
                     @endforeach
                 </div>
+            </div>
+        </div>
+        <div class="row my-5 justify-content-center">
+            <div class="col-10 my-3">
+                <h2>Dados Técnicos </h2>
+                <p>{{ $product->description }}</p>
             </div>
         </div>
     </div>
