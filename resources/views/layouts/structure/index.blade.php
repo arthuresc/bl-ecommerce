@@ -12,7 +12,6 @@
 
         <script src="/js/domUtils.js" defer></script>
         <link rel="stylesheet" href="/css/domUtils.css">
-
         @yield('script-scoped')
         @yield('css-scoped') 
 

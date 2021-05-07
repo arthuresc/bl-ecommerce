@@ -1,55 +1,106 @@
 /* ESTRUTURA */
-
 main {
-    padding: 80px 0px;
+	padding: 80px 0px;
 }
 
 footer {
-    bottom: 0;
-    width: 100%;
+	bottom: 0;
+	width: 100%;
 }
 
+.icon{
+	fill: none;
+	stroke: #313137;
+}
 /* MENU SUPERIOR - DROPDOWNS */
 .dropdown-menu {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 .dropdown-menu .dropdown-toggle::after {
-    vertical-align: middle;
-    border-left   : 4px solid;
-    border-bottom : 4px solid transparent;
-    border-top    : 4px solid transparent;
+	vertical-align: middle;
+	border-left   : 4px solid;
+	border-bottom : 4px solid transparent;
+	border-top    : 4px solid transparent;
 }
 
 .dropdown-menu .dropdown .dropdown-menu {
-    left        : 100%;
-    top         : 0%;
-    margin      : 0 20px;
-    border-width: 0;
+	left        : 100%;
+	top         : 0%;
+	margin      : 0 20px;
+	border-width: 0;
 }
 
 .dropdown-menu .dropdown .dropdown-menu.left {
-    right: 100%;
-    left : auto;
+	right: 100%;
+	left : auto;
 }
 
 .dropdown-menu>li a:hover,
 .dropdown-menu>li.show {
-    background: #007bff;
-    color     : white;
+	background: #007bff;
+	color     : white;
 }
 
 .dropdown-menu>li.show>a {
-    color: white;
+	color: white;
 }
 
 .dropdown-item>a:hover {
-    color: white !important;
+	color: white !important;
+}
+
+/* CAROUSEL MAIN */
+.carousel{
+	width: 100%;
+	/* overflow: hidden !important; */
+}
+.img-carousel{
+	width: 100% !important;
+	height: 40vh !important;
+	/* text-align: center; */
+	object-fit: cover !important;
+}
+.img-gallery--category{
+	width: 100% !important;
+	height: 50vh !important;
+	object-fit: cover !important;
+}
+.img-gallery--thumbnail{
+	text-align: center !important;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
+}
+
+.img-gallery--container{
+		width: 14rem !important;
+		height: 14rem !important;
+		overflow: hidden;
 }
 
 @media (min-width: 768px) {
-    .dropdown-menu .dropdown .dropdown-menu {
-        margin      : 0;
-        border-width: 1px;
-    }
+	/* MENU SUPERIOR - DROPDOWNS */
+	.dropdown-menu .dropdown .dropdown-menu {
+		margin: 0;
+		border-width: 1px;
+	}
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+	
+}
+@media (min-width: 1400px) {
+	
+}
+@media (min-width: 2000px) {
+	/* MENU SUPERIOR - DROPDOWNS */
+	.img-carousel{
+		width: 100% !important;
+		height: 55vh !important;
+		/* text-align: center; */
+		object-fit: cover !important;
+	}
 }
