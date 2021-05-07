@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TagsGroupsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CartsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,5 +31,8 @@ Route::patch('/tagGroup/restore/{id}', [TagsGroupsController::class, 'restore'])
 Route::resource('/category', CategoriesController::class);
 Route::get('/trash/category', [CategoriesController::class, 'trash'])->name('category.trash');
 Route::patch('/category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
+
+Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
 
 require __DIR__.'/auth.php';

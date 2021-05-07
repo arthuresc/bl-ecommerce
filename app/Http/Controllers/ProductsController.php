@@ -56,7 +56,7 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
-        $colorTags = TagGroup::where('name', 'cores')->firstOrFail();
+        $colorTags = TagGroup::where('name', 'cores')->first();
         return view('product.show')->with([
             'product' => $product, 
             'colorTags' => Tag::where('tag_group_id', $colorTags->id)->get()

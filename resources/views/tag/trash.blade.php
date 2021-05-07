@@ -3,7 +3,7 @@
 @section('script-scoped')
 <script>
     function restaurar() {
-            return confirm('Você deseja restaurar a tag?')
+            return confirm('Você deseja restaurar a tag?');
         }
 </script>
 @endsection

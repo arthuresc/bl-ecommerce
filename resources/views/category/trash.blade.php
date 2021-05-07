@@ -3,7 +3,7 @@
 @section('script-scoped')
 <script>
     function restaurar() {
-            return confirm('Você deseja restaurar a categoria?')
+            return confirm('Você deseja restaurar a categoria?');
         }
 </script>
 @endsection

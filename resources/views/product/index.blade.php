@@ -4,7 +4,7 @@
 
     <script>
         function remover() {
-            return confirm('Você deseja remover o produto?')
+            return confirm('Você deseja remover o produto?');
         }
     </script>
 

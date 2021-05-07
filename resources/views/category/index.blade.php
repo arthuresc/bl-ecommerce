@@ -4,7 +4,7 @@
 
 <script>
     function remover() {
-            return confirm('Você deseja remover a categoria?')
+            return confirm('Você deseja remover a categoria?');
         }
 </script>
 
