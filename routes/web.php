@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TagsGroupsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CartsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,8 +15,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//Products
-Route::resource('/product', ProductsController::class);
+// Route::group(['middleware' => 'isAdmin'], function(){});
+
+// //Products
+Route::group(['middleware' => 'auth'], function(){
+Route::resource('/product', ProductsController::class, ['except' => ['show']]);
 Route::get('/trash/product', [ProductsController::class, 'trash'])->name('product.trash');
 Route::patch('/product/restore/{id}', [ProductsController::class, 'restore'])->name('product.restore');
 
@@ -30,5 +34,14 @@ Route::patch('/tagGroup/restore/{id}', [TagsGroupsController::class, 'restore'])
 Route::resource('/category', CategoriesController::class);
 Route::get('/trash/category', [CategoriesController::class, 'trash'])->name('category.trash');
 Route::patch('/category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
+
+});
+Route::resource('/product', ProductsController::class, ['only' => ['show']]);
+
+// TODO resolver regra do carrinho e autenticação
+
+Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
+Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
+
 
 require __DIR__.'/auth.php';
