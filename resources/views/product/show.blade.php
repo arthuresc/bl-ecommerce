@@ -82,17 +82,21 @@
                 <h2 class="my-2">{{ $product->name }}</h2>
                 <span class="h5 my-4">R$: {{ $product->price }}</span>
                 <p class="my-4">{{ $product->description }}</p>
-                <h3 class="my-2 h6">Cores:</h3>
-                <div class="d-block my-2">
-                    @foreach ($colorTags as $tag)
-                        <input type="radio" name="colorRadio" id="{{$tag->name}}" class="btn colorButton">
-                    @endforeach
-                </div>
-                <div class="my-3 d-flex flex-direction-column align-content-center">
-                    <input type="number" value="{{$product->minQuantity}}" min="{{$product->minQuantity}}" class="minQuantity">
-                    <span>Pedido mínimo: {{$product->minQuantity}}</span>
-                </div>
-                <a href="" class="btn buyButton my-2 bg-success">Comprar</a>
+                <form method='POST' action='{{ route('cart.add', $product) }}'>
+                    @csrf
+                    <h3 class="my-2 h6">Cores:</h3>
+                    <div class="d-block my-2">
+                        @foreach ($colorTags as $tag)
+                            <input type="radio" name="tag" id="{{ $tag->name }}" value="{{ $tag->id }}" class="btn colorButton">
+                        @endforeach
+                    </div>
+                    <div class="my-3 d-flex flex-direction-column align-content-center">
+                        <input type="number" name="quantity" value="{{$product->minQuantity}}" min="{{$product->minQuantity}}" class="minQuantity">
+                        <span>Pedido mínimo: {{$product->minQuantity}}</span>
+                    </div>
+
+                    <button class="btn buyButton my-2 bg-success">Comprar</button>
+                </form>
                 <div class="d-block my-2">
                     @foreach ($product->tags as $tag)
                         <a href="{{ route('tag.show', $tag->id) }}" class="btn btn-light btn-sm">{{ $tag->name }}</a>

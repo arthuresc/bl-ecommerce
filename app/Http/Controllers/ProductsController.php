@@ -49,16 +49,16 @@ class ProductsController extends Controller
         ]);
 
         $product->tags()->sync($request->tags);
-        
+
         session()->flash('success', 'Produto cadastrado com sucesso');
         return redirect(route('product.index'));
     }
 
     public function show(Product $product)
     {
-        $colorTags = TagGroup::where('name', 'cores')->firstOrFail();
+        $colorTags = TagGroup::where('name', 'cores')->first();
         return view('product.show')->with([
-            'product' => $product, 
+            'product' => $product,
             'colorTags' => Tag::where('tag_group_id', $colorTags->id)->get()
         ]);
     }
@@ -66,7 +66,7 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         return view('product.edit')->with([
-            'product'=>$product, 
+            'product'=>$product,
             'categories'=>Category::all(),
             'selectedTags'=>$product->tags->sortBy('name'),
             'allTags'=>Tag::all()->sortBy('name')
@@ -101,7 +101,7 @@ class ProductsController extends Controller
         ]);
 
         $product->tags()->sync($request->tags);
-        
+
         session()->flash('success', 'Produto editado com sucesso');
         return redirect(route('product.index'));
     }

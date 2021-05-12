@@ -3,7 +3,7 @@
 @section('script-scoped')
     <script>
         function restaurar() {
-            return confirm('Você deseja restaurar o produto?')
+            return confirm('Você deseja restaurar o produto?');
         }
     </script>
 @endsection
