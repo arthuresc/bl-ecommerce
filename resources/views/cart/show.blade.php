@@ -37,12 +37,15 @@
                     <td><span> R$ {{ number_format($item->product()->price, 2, ',', '.') }}</td>
                     <td><span> R$ {{ number_format($item->product()->price * $item->quantity, 2, ',', '.') }}</td>
                     <td>
+                        <a href='{{ route('cart.remove', ['product'=>$item->product(), 'tag'=>$item->tag(), 'remove'=>true]) }}'
+                            class='btn btn-sm btn-danger'>Remover</a>
+                        <a href='{{ route('cart.remove', ['product'=>$item->product(), 'tag'=>$item->tag()]) }}'
+                            class='btn btn-sm btn-warning'
+                        >-</a>
                         <a 
                             href="{{ route('cart.add', ['product'=>$item->product(), 'tag'=>$item->tag()]) }}" 
                             class='btn btn-sm btn-success'
                         >+</a>
-                        {{-- <a href='{{ route('cart.remove', $item->product()->id) }}' class='btn btn-sm
-                        btn-warning'>-</a> --}}
                     </td>
                 </tr>
 

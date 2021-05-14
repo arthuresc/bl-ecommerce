@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard'); */
 
 // Route::group(['middleware' => 'isAdmin'], function(){});
 
@@ -42,6 +42,7 @@ Route::resource('/product', ProductsController::class, ['only' => ['show']]);
 
 Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
 Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
+Route::match(['get', 'post'],'/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
 
 
 require __DIR__.'/auth.php';
