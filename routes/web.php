@@ -43,6 +43,7 @@ Route::resource('/product', ProductsController::class, ['only' => ['show']]);
 Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
 Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
 Route::match(['get', 'post'],'/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/payment', [CartsController::class, 'payment'])->name('cart.payment');
 
 
 require __DIR__.'/auth.php';
