@@ -57,7 +57,7 @@
         </table>
         <div class='d-flex flex-column flex-wrap align-items-end'>
             <span class='h4'>Total da Compra: R$ {{ number_format($total, 2, ',', '.') }}</span>
-            <a href="#" class="btn btn-primary btn-lg mt-3">Finalizar Compra</a>
+            <a href="{{ route('cart.payment') }}" class="btn btn-primary btn-lg mt-3">Finalizar Compra</a>
         </div>
     </div>
 
