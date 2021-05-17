@@ -28,8 +28,8 @@
                 $total = 0;
                 @endphp
                 @foreach($cart as $item)
-                <tr>
-                    <td><img src="{{ asset($item->product()->image) }}" style="width: 100px"></td>
+                <tr class="align-middle">
+                    <td><img src="{{ asset($item->product()->mainImage) }}" style="width: 50px"></td>
                     <td><a href="{{ route('product.show', $item->product()->id) }}">{{ $item->product()->name }}</a>
                     </td>
                     <td>{{ $item->tag()->name }}</td>
