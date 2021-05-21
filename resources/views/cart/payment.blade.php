@@ -103,7 +103,7 @@
 
 <hr>
 
-<form class='my-2'>
+<form class='my-2' method="post" action="{{ route('order.add') }}">
     @csrf
 
     <div class='row justify-content-center mw-100'>
@@ -118,8 +118,8 @@
         </div>
 
         <div class="col-md-5 col-10">
-            <label for='cc-card'>Número do Cartão</label>
-            <input type='number' id='cc-card' name='cc-card' class='form-control' required>
+            <label for='cc_number'>Número do Cartão</label>
+            <input type='number' id='cc_number' name='cc_number' class='form-control' required>
         </div>
 
         <div class="col-md-5 col-10">
