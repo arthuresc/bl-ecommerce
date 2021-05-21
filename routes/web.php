@@ -7,6 +7,7 @@ use App\Http\Controllers\TagsGroupsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,16 +36,19 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/category', CategoriesController::class);
     Route::get('/trash/category', [CategoriesController::class, 'trash'])->name('category.trash');
     Route::patch('/category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
+
+    Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
+    Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
+    Route::match(['get', 'post'],'/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
+    Route::get('/cart/payment', [CartsController::class, 'payment'])->name('cart.payment');
+
+    Route::resource('/address', AddressController::class);
+
+    Route::post('/order/add', [OrderController::class, 'add'])->name('order.add');
+    Route::get('/order', [OrderController::class, 'show'])->name('order.show');
 });
 Route::resource('/product', ProductsController::class, ['only' => ['show']]);
 
-// TODO resolver regra do carrinho e autenticação
 
-Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
-Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
-Route::match(['get', 'post'],'/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
-Route::get('/cart/payment', [CartsController::class, 'payment'])->name('cart.payment');
-
-Route::resource('/address', AddressController::class);
 
 require __DIR__.'/auth.php';
