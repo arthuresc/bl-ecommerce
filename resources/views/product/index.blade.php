@@ -44,7 +44,7 @@
                         <td>{{ substr_count($product->arrayImages, 'storage')}}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ Str::limit($product->description, 15) }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td>{{ number_format($product->price, 2, ',', '.') }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->minQuantity }}</td>
                         <td>{{ $product->category->name }}</td>
