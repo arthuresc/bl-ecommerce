@@ -80,7 +80,7 @@
                     </ol>
                 </nav>
                 <h2 class="my-2">{{ $product->name }}</h2>
-                <span class="h5 my-4">R$: {{ $product->price }}</span>
+                <span class="h5 my-4">R$: {{ number_format($product->price, 2, ',', '.') }}</span>
                 <p class="my-4">{{ $product->description }}</p>
                 <form method='POST' action='{{ route('cart.add', $product) }}'>
                     @csrf

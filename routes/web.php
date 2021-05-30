@@ -20,7 +20,8 @@ Route::get('/', function () {
 // Route::group(['middleware' => 'isAdmin'], function(){});
 
 // //Products
-Route::group(['middleware' => 'auth'], function(){
+
+Route::group(['middleware' => 'isAdmin'], function() {
     Route::resource('/product', ProductsController::class, ['except' => ['show']]);
     Route::get('/trash/product', [ProductsController::class, 'trash'])->name('product.trash');
     Route::patch('/product/restore/{id}', [ProductsController::class, 'restore'])->name('product.restore');
@@ -36,7 +37,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/category', CategoriesController::class);
     Route::get('/trash/category', [CategoriesController::class, 'trash'])->name('category.trash');
     Route::patch('/category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
+});
 
+Route::group(['middleware' => 'auth'], function(){
     Route::get('/cart', [CartsController::class, 'show'])->name('cart.show');
     Route::match(['get', 'post'],'/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
     Route::match(['get', 'post'],'/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
@@ -47,7 +50,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/order/add', [OrderController::class, 'add'])->name('order.add');
     Route::get('/order', [OrderController::class, 'show'])->name('order.show');
 });
+
 Route::resource('/product', ProductsController::class, ['only' => ['show']]);
+Route::get('/search', [ProductsController::class, 'search'])->name('product.search');
+Route::resource('/tag', TagsController::class, ['only' => ['show']]);
+Route::resource('/category', CategoriesController::class, ['only' => ['show']]);
 
 
 

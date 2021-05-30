@@ -18,8 +18,7 @@
             </div>
             <div class='text-center mt-3'>
                 <span class='d-block'>{{ $product->name }}</span>
-                <span class='text-decoration-line-through text-muted'>R$100,00</span>
-                <span class=''>{{ $product->price }}</span>
+                <span class=''>R$ {{ number_format($product->price, 2, ',', '.') }}</span>
                 <div class='mt-3'>
                     <a href='{{ route('product.show', $product->id) }}' class='btn btn-success'>Comprar</a>
                 </div>
