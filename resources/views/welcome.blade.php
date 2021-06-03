@@ -50,15 +50,29 @@
 <div class="container my-4">
   <div class="row">
     <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/relogio.jpg" alt="">
+      <a href='{{ route('category.show', 1) }}' class="link-dark">
+        <img class="img-gallery--category w-100 img-fluid" src="../images/relogio.jpg" alt="">
+      </a>
     </div>
     <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
       @foreach (\App\Models\Product::highlights(1, 3) as $product)
-        <a href='{{ route('product.show', $product->id) }}'>
-          <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
-            <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt=""> 
+        <div class="flip-card img-gallery--container">
+          <div class="flip-card-inner shadow">
+            <div class="flip-card-front p-0 my-sm-3 my-lg-0">
+              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+            </div>
+            <a href='{{ route('product.show', $product->id) }}' class="link-dark">
+              <div class="flip-card-back">
+                <div class="mt-5">
+                  <p class="text-muted">{{ $product->name }}</p>
+                  <div class='mt-5'>
+                    <span class="display-6">Comprar</span>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
       @endforeach
     </div>
   </div>
@@ -68,14 +82,30 @@
 
 <div class="container my-4">
   <div class="row">
-    <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
-    </div>
+      <div class="col-lg-4 col-md-10 mx-auto">
+        <a href='{{ route('category.show', 1) }}' class="link-dark">
+          <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+        </a>
+      </div>
     <div
       class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
       @foreach (\App\Models\Product::highlights(1, 6) as $product)
-        <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
-          <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt=""> 
+        <div class="flip-card img-gallery--container">
+          <div class="flip-card-inner shadow">
+            <div class="flip-card-front p-0 my-sm-3 my-lg-0">
+              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+            </div>
+            <a href='{{ route('product.show', $product->id) }}' class="link-dark">
+              <div class="flip-card-back">
+                <div class="mt-5">
+                  <p class="text-muted">{{ $product->name }}</p>
+                  <div class='mt-5'>
+                    <span class="display-6">Comprar</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       @endforeach
     </div>
@@ -87,16 +117,34 @@
 <div class="container my-4">
   <div class="row">
     <div
-      class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
+      class="p-1 col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
         @foreach (\App\Models\Product::highlights(1, 6) as $product)
-          <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
-            <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+
+        <div class="flip-card img-gallery--container">
+          <div class="flip-card-inner shadow">
+            <div class="flip-card-front p-0 my-sm-3 my-lg-0">
+              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+            </div>
+            <a href='{{ route('product.show', $product->id) }}' class="link-dark">
+              <div class="flip-card-back">
+                <div class="mt-5">
+                  <p class="text-muted">{{ $product->name }}</p>
+                  <div class='mt-5'>
+                    <span class="display-6">Comprar</span>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
+        </div>
+
         @endforeach
     </div>
-    <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/fone.jpg" alt="">
-    </div>
+      <div class="col-lg-4 col-md-10 mx-auto">
+        <a href='{{ route('category.show', 1) }}' class="link-dark">
+          <img class="img-gallery--category w-100 img-fluid" src="../images/fone.jpg" alt="">
+        </a>
+      </div>
   </div>
 </div>
 

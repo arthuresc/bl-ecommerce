@@ -82,7 +82,6 @@ header {
 .img-gallery--container{
 	width: 14rem !important;
 	height: 14rem !important;
-	overflow: hidden;
 }
 
 @media (min-width: 768px) {
