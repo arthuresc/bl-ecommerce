@@ -3,9 +3,9 @@
 @section('content')
 
 <section>
-    <div class='row m-0'>
+    <div class='row my-5'>
         <div class='my-2 text-center'>
-            <h2>Carrinho de Compras</h2>
+            <h1>Carrinho de Compras</h1>
         </div>
     </div>
 
@@ -30,7 +30,10 @@
                 @foreach($cart as $item)
                 <tr class="align-middle">
                     <td><img src="{{ asset($item->product()->mainImage) }}" style="width: 50px"></td>
-                    <td><a href="{{ route('product.show', $item->product()->id) }}">{{ $item->product()->name }}</a>
+                    <td>
+                        <a href="{{ route('product.show', $item->product()->id) }}" class="link-dark">
+                            {{ $item->product()->name }}
+                        </a>
                     </td>
                     <td>{{ $item->tag()->name }}</td>
                     <td>{{ $item->quantity }}</td>
@@ -38,14 +41,23 @@
                     <td><span> R$ {{ number_format($item->product()->price * $item->quantity, 2, ',', '.') }}</td>
                     <td>
                         <a href='{{ route('cart.remove', ['product'=>$item->product(), 'tag'=>$item->tag(), 'remove'=>true]) }}'
-                            class='btn btn-sm btn-danger'>Remover</a>
+                            class='btn btn-sm btn-danger'
+                        >
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                        @if($item->quantity > $item->product()->minQuantity)
                         <a href='{{ route('cart.remove', ['product'=>$item->product(), 'tag'=>$item->tag()]) }}'
                             class='btn btn-sm btn-warning'
-                        >-</a>
+                        >
+                            <i class="fas fa-minus text-white"></i>
+                        </a>
+                        @endif
                         <a 
                             href="{{ route('cart.add', ['product'=>$item->product(), 'tag'=>$item->tag()]) }}" 
                             class='btn btn-sm btn-success'
-                        >+</a>
+                        >
+                            <i class="fas fa-plus"></i>
+                        </a>
                     </td>
                 </tr>
 
@@ -56,8 +68,9 @@
             </tbody>
         </table>
         <div class='d-flex flex-column flex-wrap align-items-end'>
-            <span class='h4'>Total da Compra: R$ {{ number_format($total, 2, ',', '.') }}</span>
-            <a href="{{ route('cart.payment') }}" class="btn btn-primary btn-lg mt-3">Finalizar Compra</a>
+            <span class="h6">Total da Compra: </span>
+            <span class='h4'>R$ {{ number_format($total, 2, ',', '.') }}</span>
+            <a href="{{ route('cart.payment') }}" class="btn btn-orange btn-lg mt-3">Finalizar Compra</a>
         </div>
     </div>
 

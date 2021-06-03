@@ -9,15 +9,23 @@
 </script>
 
 @section('content')
-    <div class="container m-5">
+    <div class="container my-5">
 
-        <div class="mx-5">
-            <h1>Lista de grupos de tags</h1>
-            <a href="{{ Route('tagGroup.create') }}" class="btn btn-sm btn-primary">Cadastrar</a>
-            <a href="{{ Route('tagGroup.trash') }}" class='btn btn-sm btn-danger'>Lixeira</a>
+        <div class='d-flex justify-content-between align-items-center'>
+            <h1>Lista de Grupos de Tags</h1>
+            <div>
+                <a href="{{ Route('tagGroup.create') }}" class="btn btn-sm btn-primary">
+                    Adicionar
+                    <i class="fas fa-plus ms-1"></i>
+                </a>
+                <a href="{{ Route('tagGroup.trash') }}" class='btn btn-sm btn-danger'>
+                    Lixeira
+                    <i class="fas fa-recycle ms-1"></i>
+                </a>
+            </div>
         </div>
 
-        <div class="row mx-5">
+        <div class="row">
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
@@ -32,14 +40,16 @@
                         <td>{{ $tagGroup->id }}</td>
                         <td>{{ $tagGroup->name }}</td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-primary"> Visualizar </a>
-                            <a href="{{ route('tagGroup.edit', $tagGroup->id) }}" class="btn btn-sm btn-warning">
-                                Editar </a>
+                            <a href="{{ route('tagGroup.edit', $tagGroup->id) }}" class="btn btn-sm btn-warning text-white">
+                                <i class="far fa-edit"></i>    
+                            </a>
                             <form action="{{ route('tagGroup.destroy', $tagGroup->id ) }}" method="POST"
                                 class="d-inline" onsubmit="return remover()">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Apagar</button>
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

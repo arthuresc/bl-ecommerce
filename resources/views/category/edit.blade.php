@@ -2,18 +2,28 @@
 
 @section('content')
     <div class="container m-5">
-        <h1>Editar categoria</h1>
+        <div class='d-flex justify-content-between align-items-center'>
+            <h1>Editar Categoria</h1>
+            <a href="{{ Route('category.index') }}" class="btn btn-sm btn-primary">
+                Voltar
+                <i class="fas fa-undo-alt ms-1"></i>
+            </a>
+        </div>
+        <span class="text-muted">* Obrigatório</span>
         <form method="post" action="{{ route('category.update', $category->id) }}" enctype="multipart/form-data"
-            class="m-3">
+            class="m-3 row">
             @CSRF
             @method('PATCH')
-            <div class="row form-group mb-2">
-                <label class="form-label" for="name">Nome (requerido)</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="name">Nome *</label>
                 <input type="text" name="name" id="name" placeholder="Nome da categoria" class="form-control"
                     value="{{ $category->name }}" required>
             </div>
-            <div class="row col-2">
-                <button type="submit" class="btn btn-md btn-success mt-3"> Salvar </button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-md btn-success mt-3">
+                    Salvar
+                    <i class="fas fa-save ms-1"></i>
+                </button>
             </div>
         </form>
     </div>

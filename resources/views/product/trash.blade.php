@@ -9,11 +9,14 @@
 @endsection
 
 @section('content')
-    <div class="container m-5">
+    <div class="container my-5">
 
-        <div>
+        <div class='d-flex justify-content-between align-items-center'>
             <h1>Lista de produtos apagados</h1>
-            <a href="{{ Route('product.index') }}" class="btn btn-sm btn-primary">Voltar</a>
+            <a href="{{ Route('product.index') }}" class="btn btn-sm btn-primary">
+                Voltar
+                <i class="fas fa-undo-alt ms-1"></i>
+            </a>
         </div>
 
         <div class="row">
@@ -22,7 +25,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Imagem</th>
-                        <th>Qtd imagens</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Preço</th>
@@ -36,10 +38,9 @@
                     <tr>
                         <td>{{ $product->id }}</td>
                         <td><img src="{{ asset($product->mainImage) }}" width="50px"></td>
-                        <td>{{ substr_count($product->arrayImages, 'storage')}}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->minQuantity }}</td>
                         <td>
@@ -47,7 +48,9 @@
                                 class="d-inline" onsubmit="return restaurar()">
                                 @csrf
                                 @method('PATCH')
-                                <button type="submit" class="btn btn-sm btn-success">Restaurar</button>
+                                <button type="submit" class="btn btn-sm btn-success">
+                                    <i class="fas fa-trash-restore"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

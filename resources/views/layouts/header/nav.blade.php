@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top p-3 shadow-sm" id="main_navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-white p-3 shadow-sm" id="main_navbar">
   <div class="container-fluid p-0">
-    <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+    <a class="navbar-brand" href="{{ route('home') }}">
+      <img src="/images/logo.png" width="100px">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,66 +43,78 @@
 
           </ul>
         </li>
-        @if (Route::has('isAdmin'))
-        <li class="nav-item dropdown bg-primary rounded p-1 mx-2">
-          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownAdminPanel" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Painel de Administrador
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminPanel">
-            <li class='dropdown-item p-0'><a class='nav-link text-dark' href="{{ route('product.index') }}">Produto</a>
-            </li>
-            <li class='dropdown-item p-0'><a class='nav-link text-dark'
-                href="{{ route('category.index') }}">Categoria</a>
-            </li>
-            <li class='dropdown-item p-0'><a class='nav-link text-dark' href="{{ route('tag.index') }}">Tag</a></li>
-            <li class='dropdown-item p-0'><a class='nav-link text-dark' href="{{ route('tagGroup.index') }}">Grupos de
-                Tags</a></li>
-          </ul>
-        </li>
+        @if(Auth()->user() && Auth()->user()->isAdmin)
+          <li class="nav-item dropdown btn-orange controlPanel p-1 mx-2">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownAdminPanel" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Painel de Administrador
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminPanel">
+              <li class='dropdown-item p-0'><a class='nav-link text-dark' href="{{ route('product.index') }}">Produto</a>
+              </li>
+              <li class='dropdown-item p-0'><a class='nav-link text-dark'
+                  href="{{ route('category.index') }}">Categoria</a>
+              </li>
+              <li class='dropdown-item p-0'><a class='nav-link text-dark' href="{{ route('tag.index') }}">Tag</a></li>
+              <li class='dropdown-item p-0'><a class='nav-link text-dark' href="{{ route('tagGroup.index') }}">Grupos de
+                  Tags</a></li>
+            </ul>
+          </li>
         @endif
+
       </ul>
-      
-      @if (Route::has('login'))
-      <div class="fixed top-0 right-0 px-6 py-4 d-flex">
-        @auth
-
-        <li class="nav-item d-flex">
-          <span class='nav-link'>{{ Auth()->user()->name }}</span>
-          <a class='nav-link' href='{{ route('cart.show') }}'>Carrinho
-            ({{\App\Models\Cart::count()}})</a>
-        </li>
-
-        <form action="{{ route('logout') }}" name="logout" method="POST">
-          @csrf
-          <a onclick="logout.submit()" href="#" class="ml-4 text-sm text-gray-700 underline">Logout</a>
-        </form>
-
-        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">
-          <x-orchid-icon viewBox="0 0 60 60" width="36" height="36" class="icon" path="fa.user" />
-
-        </a>
-        @else
-        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-        @if (Route::has('register'))
-          <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-        @endif
-        @endauth
-      </div>
-      @endif
 
       <form class="d-flex" action="{{ route('product.search') }}">
-        <input 
-          class="form-control me-2" 
-          type="search" 
-          placeholder="Buscar" 
-          aria-label="Search" 
-          name="search" 
-          id="search"
-        >
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <div class="input-group">
+          <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" name="search" id="search">
+      
+          <button class="btn btn-outline-orange" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
       </form>
+      
+      
+      <div class="fixed top-0 right-0 px-6 py-4 d-flex">
+        @if (Route::has('login'))
+          @auth
+
+          <div class="mx-4 d-flex align-items-center">
+
+            <a class='nav-link' href='{{ route('order.show') }}'>
+              <span class='nav-link text-orange'>{{ Auth()->user()->name }}</span>
+            </a>
+
+            <a class='nav-link link-secondary' href='{{ route('cart.show') }}'>
+              <i class="fas fa-shopping-cart"></i>
+              {{\App\Models\Cart::count()}}
+            </a>
+
+          </div>
+
+          <form action="{{ route('logout') }}" name="logout" method="POST" class="d-flex align-items-center mx-4 mb-0">
+            @csrf
+            <a onclick="logout.submit()" href="#" class="nav-options mr-1 link-secondary underline">
+              Sair
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+          </form>
+
+        @else
+          <div class="mx-4">
+            <a href="{{ route('login') }}" class="nav-options mx-2 link-secondary">Logar</a>
+          
+            @if (Route::has('register'))
+              <a href="{{ route('register') }}" class="nav-options ml-4 link-secondary">
+                Registrar
+              </a>
+            @endif
+          </div>
+
+          @endauth
+        @endif
+      </div>
+      
     </div>
   </div>
 </nav>
