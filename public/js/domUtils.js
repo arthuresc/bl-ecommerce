@@ -1,4 +1,4 @@
-function bootstrapNavbar(el = "main_navbar") {
+function bootstrapNavbar(el = "navbar_main") {
 
     this.init = function () {
         var dropdowns = document

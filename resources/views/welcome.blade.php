@@ -50,64 +50,80 @@
 {{-- <div class='col-10 col-md-6 col-lg-4 mx-auto mt-3'> --}}
   {{-- <div class='text-center'> --}}
     {{-- <img src="{{ asset($product->mainImage) }}" style='height: 200px; width: 150px;'> --}}
-  {{-- </div> --}}
-  {{-- <div class='text-center mt-3'> --}}
-    {{-- <span class='d-block'>{{ $product->name }}</span> --}}
-    {{-- <span class='text-decoration-line-through text-muted'>R$100,00</span> --}}
-    {{-- <span class=''>{{ $product->price }}</span> --}}
-    {{-- <div class='mt-3'> --}}
-      {{-- <a href='{{ route('product.show', $product->id) }}' class='btn btn-success'></a> --}}
     {{-- </div> --}}
-  {{-- </div> --}}
-{{-- </div> --}}
-{{-- @endforeach --}}
+    {{-- <div class='text-center mt-3'> --}}
+      {{-- <span class='d-block'>{{ $product->name }}</span> --}}
+      {{-- <span class='text-decoration-line-through text-muted'>R$100,00</span> --}}
+      {{-- <span class=''>{{ $product->price }}</span> --}}
+      {{-- <div class='mt-3'> --}}
+        {{-- <a href='{{ route('product.show', $product->id) }}' class='btn btn-success'></a> --}}
+        {{-- </div> --}}
+        {{-- </div> --}}
+        {{-- </div> --}}
+        {{-- @endforeach --}}
 
-<div class="container my-4">
-  <div class="row">
-    <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
-    </div>
-    <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      @foreach (\App\Models\Product::highlights() as $product)
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><a href='{{ route('product.show', $product->id) }}'><img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt=""> </div></a>
-      @endforeach
-    </div>
-  </div>
-</div>
+        <div class="container my-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-10 mx-auto">
+              <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+            </div>
+            <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
+              @foreach (\App\Models\Product::highlights() as $product)
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
+                <a class="img-link--container" href='{{ route('product.show', $product->id) }}'>
+                  <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="{{ $product->name }}">
 
-{{--  //FIND INICIO PRODUTOS --}}
-<div class="container my-4">
-  <div class="row">
-    <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
-    </div>
-    <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio2.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/sorvete.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-    </div>
-  </div>
-</div>
-{{-- <x-orchid-icon class="icon" path="fa.arrow-left"/> --}}
-<div class="container my-4">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio2.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/sorvete.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-    </div>
-    <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
-    </div>
-  </div>
-</div>
+                  <div class="txt-gallery--thumbnail d-flex flex-row flex-wrap justify-content-around">
+                    <span>{{$product->name }}</span>
+                    <x-orchid-icon class="icon-gallery-thumbnail" path="fa.chevron-right"/>
+                  </div>
+
+                </a>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+        {{--  //FIND INICIO PRODUTOS --}}
+        <div class="container my-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-10 mx-auto">
+              <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+            </div>
+            <div class="col-lg-6 col-md-12 mx-auto d-flex flex-md-column justify-content-between">
+              <div class="p-0 col-lg-4 col-md-6 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio2.jpg" alt=""> </div>
+              <div class="p-0 col-lg-4 col-md-6 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/sorvete.jpg" alt=""> </div>
+              <div class="p-0 col-lg-4 col-md-6 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+              <div class="p-0 col-lg-4 col-md-6 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+              <div class="p-0 col-lg-4 col-md-6 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+              <div class="p-0 col-lg-4 col-md-6 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+            </div>
+          </div>
+        </div>
+        {{-- <x-orchid-icon class="icon" path="fa.arrow-left"/> --}}
+        <div class="container my-4">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio2.jpg" alt=""> </div>
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/sorvete.jpg" alt=""> </div>
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+              <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
+            </div>
+            <div class="col-lg-4 col-md-10 mx-auto">
+              <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+            </div>
+          </div>
+        </div>
 
 
 
-@endsection
+        @endsection
+{{-- my-sm-3 my-lg-0
+my-sm-3 my-lg-0
+my-sm-3 my-lg-0
+my-sm-3 my-lg-0
+my-sm-3 my-lg-0
+my-sm-3 my-lg-0 --}}

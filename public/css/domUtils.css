@@ -1,106 +1,157 @@
 /* ESTRUTURA */
 main {
-	padding: 80px 0px;
+  padding: 80px 0px;
 }
 
 footer {
-	bottom: 0;
-	width: 100%;
+  bottom: 0;
+  width: 100%;
 }
 
 .icon{
-	fill: none;
-	stroke: #313137;
+  fill: none;
+  stroke: #313137;
 }
 /* MENU SUPERIOR - DROPDOWNS */
 .dropdown-menu {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 .dropdown-menu .dropdown-toggle::after {
-	vertical-align: middle;
-	border-left   : 4px solid;
-	border-bottom : 4px solid transparent;
-	border-top    : 4px solid transparent;
+  vertical-align: middle;
+  border-left   : 4px solid;
+  border-bottom : 4px solid transparent;
+  border-top    : 4px solid transparent;
 }
 
 .dropdown-menu .dropdown .dropdown-menu {
-	left        : 100%;
-	top         : 0%;
-	margin      : 0 20px;
-	border-width: 0;
+  left        : 100%;
+  top         : 0%;
+  margin      : 0 20px;
+  border-width: 0;
 }
 
 .dropdown-menu .dropdown .dropdown-menu.left {
-	right: 100%;
-	left : auto;
+  right: 100%;
+  left : auto;
 }
 
 .dropdown-menu>li a:hover,
 .dropdown-menu>li.show {
-	background: #007bff;
-	color     : white;
+  background: #007bff;
+  color     : white;
 }
 
 .dropdown-menu>li.show>a {
-	color: white;
+  color: white;
 }
 
 .dropdown-item>a:hover {
-	color: white !important;
+  color: white !important;
 }
 
 /* CAROUSEL MAIN */
 .carousel{
-	width: 100%;
-	/* overflow: hidden !important; */
+  width: 100%;
+  /* overflow: hidden !important; */
 }
 .img-carousel{
-	width: 100% !important;
-	height: 40vh !important;
-	/* text-align: center; */
-	object-fit: cover !important;
+  width: 100% !important;
+  height: 40vh !important;
+  /* text-align: center; */
+  object-fit: cover !important;
 }
 .img-gallery--category{
-	width: 100% !important;
-	height: 50vh !important;
-	object-fit: cover !important;
+  width: 100% !important;
+  height: 50vh !important;
+  object-fit: cover !important;
+  background-color: #313137;
 }
 .img-gallery--thumbnail{
-	text-align: center !important;
-	width: 100% !important;
-	height: 100% !important;
-	object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 1;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  position: relative;
 }
 
 .img-gallery--container{
-		width: 14rem !important;
-		height: 14rem !important;
-		overflow: hidden;
+  width: 14rem !important;
+  height: 14rem !important;
+  overflow: hidden;
+  background-color:#222;
+  transition: .5s ease;
+  backface-visibility: hidden !important;
 }
-
+.img-link--container:hover > .txt-gallery--thumbnail{
+  opacity: 1 !important;
+}
+.img-link--container:hover .icon-gallery-thumbnail{
+  opacity: 1 !important;
+}
+.img-link--container:hover .img-gallery--thumbnail{
+  opacity: 0.5 !important;
+  mix-blend-mode: soft-light !important;
+}
+.img-link--container{
+  position: relative !important;
+}
+.icon-gallery-thumbnail{
+  stroke: #fff;
+  fill: none;
+}
+.txt-gallery--thumbnail{
+  position: absolute !important;
+  color: #ccc;
+  display: block !important;
+  top: 50% !important;
+  left: 50% !important;
+  opacity: 0 !important;
+  font-size: 25px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  transition: .5s ease;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100% !important;
+}
 @media (min-width: 768px) {
-	/* MENU SUPERIOR - DROPDOWNS */
-	.dropdown-menu .dropdown .dropdown-menu {
-		margin: 0;
-		border-width: 1px;
-	}
+  /* MENU SUPERIOR - DROPDOWNS */
+  .dropdown-menu .dropdown .dropdown-menu {
+    margin: 0;
+    border-width: 1px;
+  }
+    .icon-brand{
+    width: 10vw;
+    height: 100%;
+  }
 }
 @media (min-width: 992px) {
-
+  .icon-brand{
+    width: 10vw;
+    height: 100%;
+  }
 }
 @media (min-width: 1200px) {
-	
+  .icon-brand{
+    width: 10vw;
+    height: 100%;
+  }
 }
 @media (min-width: 1400px) {
-	
+    .icon-brand{
+    width: 10vw;
+    height: 100%;
+  }
 }
 @media (min-width: 2000px) {
-	/* MENU SUPERIOR - DROPDOWNS */
-	.img-carousel{
-		width: 100% !important;
-		height: 55vh !important;
-		/* text-align: center; */
-		object-fit: cover !important;
-	}
+  /* MENU SUPERIOR - DROPDOWNS */
+  .img-carousel{
+    width: 100% !important;
+    height: 55vh !important;
+    /* text-align: center; */
+    object-fit: cover !important;
+  }
 }
