@@ -9,14 +9,17 @@
 @endsection
 
 @section('content')
-    <div class="container m-5">
+    <div class="container my-5">
 
-        <div>
-            <h1 class="mx-5">Lista de tags apagadas</h1>
-            <a href="{{ Route('tag.index') }}" class="btn btn-sm btn-primary mx-5">Voltar</a>
+        <div class='d-flex justify-content-between align-items-center'>
+            <h1>Lista de tags apagados</h1>
+            <a href="{{ Route('tag.index') }}" class="btn btn-sm btn-primary">
+                Voltar
+                <i class="fas fa-undo-alt ms-1"></i>
+            </a>
         </div>
 
-        <div class="row mx-5">
+        <div class="row">
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
@@ -37,7 +40,9 @@
                                 onsubmit="return restaurar()">
                                 @csrf
                                 @method('PATCH')
-                                <button type="submit" class="btn btn-sm btn-success">Restaurar</button>
+                                <button type="submit" class="btn btn-sm btn-success">
+                                    <i class="fas fa-trash-restore"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

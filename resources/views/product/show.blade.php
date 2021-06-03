@@ -18,13 +18,16 @@
         .buyButton {
             color: #fff;
         }
+        .buyButton:hover {
+            background-color: black !important;
+            color: #fff !important;
+        }
         .mainImage {
             height: 450px;
             width: 100%;
             background-position: center center;
             background-repeat: no-repeat;
             object-fit: cover;
-            padding: 3px;
         }
         .arrayImagesBox {
             height: 90px;
@@ -68,13 +71,17 @@
                     @endforeach
                 </div>
                 <div class="col-10">
-                    <img src="{{ asset($product->mainImage) }}" class="mainImage" />
+                    <img src="{{ asset($product->mainImage) }}" class="mainImage shadow" />
                 </div>
             </div>
             <div class="col-5 my-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="breadcrumbLink" href="{{ url('/') }}">Loja</a></li>
+                        <li class="breadcrumb-item">
+                            <a class="breadcrumbLink" href="{{ url('/') }}">
+                                <i class="fas fa-home text-dark"></i>
+                            </a>
+                        </li>
                         <li class="breadcrumb-item"><a class="breadcrumbLink" href="{{ route('category.show', $product->category) }}">{{ $product->category->name }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                     </ol>
@@ -95,11 +102,11 @@
                         <span>Pedido mínimo: {{$product->minQuantity}}</span>
                     </div>
 
-                    <button class="btn buyButton my-2 bg-success">Comprar</button>
+                    <button class="btn buyButton my-2 bg-orange">Comprar</button>
                 </form>
                 <div class="d-block my-2">
                     @foreach ($product->tags as $tag)
-                        <a href="{{ route('tag.show', $tag->id) }}" class="btn btn-light btn-sm">{{ $tag->name }}</a>
+                        <a href="{{ route('tag.show', $tag->id) }}" class="btn btn-light btn-sm shadow-sm">{{ $tag->name }}</a>
                     @endforeach
                 </div>
             </div>

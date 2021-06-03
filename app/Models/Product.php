@@ -21,7 +21,7 @@ class Product extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public static function highlights() {
-        return Product::all()->where('highlight', '=', 1)->take(6);
+    public static function highlights($category, $results) {
+        return Product::all()->where('highlight', '=', 1)->where('category_id', '=', $category)->take($results);
     }
 }

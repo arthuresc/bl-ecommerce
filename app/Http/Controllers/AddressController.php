@@ -20,9 +20,9 @@ class AddressController extends Controller
 
     public function store(Request $request)
     {
+        $origin = $request->query()['origin'];
+        
         $item = Address::address();
-
-        //dd($item);
 
         if($item) {
             $item->update([
@@ -35,7 +35,6 @@ class AddressController extends Controller
                 'country' => $request->country
             ]);
             session()->flash('success', 'Endereço atualizado!');
-            return view('cart.payment');
         } else {
             Address::create([
                 'user_id' => Auth()->user()->id,
@@ -47,7 +46,16 @@ class AddressController extends Controller
                 'country' => $request->country
             ]);
             session()->flash('success', 'Endereço adicionado com sucesso!');
+        }
+
+        if ($origin === 'order') {
+
+            return view('order.show');
+
+        } elseif ($origin === 'payment') {
+
             return view('cart.payment');
+
         }
     }
 

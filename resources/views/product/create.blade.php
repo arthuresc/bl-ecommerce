@@ -46,51 +46,76 @@
 
 @endsection
 
+@section('css-scoped')
+
+<style>
+    .tagSpan:hover {
+        background-color: #dc3545 !important;
+        cursor: pointer;
+    }
+
+    .tags-container {
+        height: 100px;
+        background: #ECECEC;
+        overflow: auto;
+        border: 1px solid #DEDEDE;
+        border-radius: 4px;
+    }
+</style>
+
+@endsection
+
 @section('content')
     <div class="container m-5">
-        <h1>Cadastrar produto</h1>
-        <form method="post" action="{{ Route("product.store") }}" enctype="multipart/form-data" class="m-3">
+        <div class='d-flex justify-content-between align-items-center'>
+            <h1>Cadastrar Produto</h1>
+            <a href="{{ Route('product.index') }}" class="btn btn-sm btn-primary">
+                Voltar
+                <i class="fas fa-undo-alt ms-1"></i>
+            </a>
+        </div>
+        <span class="text-muted">* Obrigatório</span>
+        <form method="post" action="{{ Route("product.store") }}" enctype="multipart/form-data" class="m-3 row">
             @CSRF
 
-            <div class="row mb-2 p-2">
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="name">Nome *</label>
+                <input type="text" name="name" id="name" placeholder="Nome do produto" class="form-control" required>
+            </div>
+
+            <div class="col-12 col-md-6 form-group d-flex align-items-center">
                 <div class="form-check">
                     <input type="checkbox" name="highlight" id="highlight" class="form-check-input" value="true">
                     <label class="form-check-label" for="highlight">Destacar</label>
                 </div>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="name">Nome (requerido)</label>
-                <input type="text" name="name" id="name" placeholder="Nome do produto" class="form-control"
-                    required>
-            </div>
-
-            <div class="row form-group mb-2">
-                <label class="form-label" for="description">Descrição (requerido)</label>
+            <div class="form-group mb-2">
+                <label class="form-label" for="description">Descrição *</label>
                 <textarea type="text" maxlength="255" name="description" id="description" placeholder="Descrição do produto"
                     class="form-control" required></textarea>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="price">Preço (requerido)</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="price">Preço *</label>
                 <input type="number" name="price" id="price" placeholder="Preço do produto" class="form-control"
                     min="0.00" max="10000000.00" step="0.01" required>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="quantity">Quantidade (requerido)</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="quantity">Quantidade *</label>
                 <input type="number" name="quantity" id="quantity" placeholder="Quantidade do produto"
                     class="form-control" min="0" step="1" required>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="minQuantity">Quantidade mínima (requerido)</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="minQuantity">Quantidade mínima *</label>
                 <input type="number" name="minQuantity" id="minQuantity" placeholder="Quantidade mínima para compra"
                     class="form-control" min="0" step="1" required>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="category_id">Categoria (requerido)</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="category_id">Categoria *</label>
                 <select name="category_id" class="form-select">
                     @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -98,7 +123,7 @@
                 </select>
             </div>
 
-            <div class="row form-group mb-2">
+            <div class="col-12 form-group mb-2">
                 <label class="form-label">Tags</label>
                 <select class="form-control" onchange="selectTag(this.value)">
                     <script>
@@ -111,24 +136,27 @@
                 </select>
 
                 <div class="tags-container my-2">
-                    <div id="selected-tags" class="d-flex flex-wrap" />
+                    <div id="selected-tags" class="d-flex flex-wrap"></div>
                     <select class='d-none' name="tags[]" id="tag-id" multiple></select>
                 </div>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="mainImage">Imagem principal (requerido)</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="mainImage">Imagem principal *</label>
                 <input type="file" name="mainImage" id="mainImage" class="form-control" required>
             </div>
 
-            <div class="row form-group mb-2">
+            <div class="col-12 col-md-6 form-group mb-2">
                 <label class="form-label" for="arrayImages">Imagens adicionais (opcional)</label>
                 <input type="file" accept="image/png, image/jpeg" name="arrayImages[]" id="arrayImages"
                     class="form-control" multiple>
             </div>
 
-            <div class="row col-2">
-                <button type="submit" class="btn btn-md btn-success mt-3"> Salvar </button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-md btn-success mt-3">
+                    Salvar
+                    <i class="fas fa-save ms-1"></i>
+                </button>
             </div>
         </form>
     </div>

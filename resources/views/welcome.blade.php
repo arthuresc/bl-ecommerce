@@ -12,25 +12,25 @@
     <div class="carousel-item active">
       <img src="../images/mouse.jpg" class="d-block img-carousel" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Nome de um mouse</h5>
-        <p>A descrição completa sobre o mouse.</p>
+        <h5>Mouse</h5>
+        <p>Encontre mouses e acessórios aqui.</p>
       </div>
     </div>
     <section>
-      <div class='row mt-5 mx-0'>
+      <div class='row mx-0'>
       </div>
       <div class="carousel-item">
         <img src="../images/café.jpg" class="d-block img-carousel" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+          <h5>Brindes exclusivos</h5>
+          <p>Tudo para seus funcionários.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="../images/relogio.jpg" class="d-block img-carousel" alt="...">
+        <img src="../images/relogio2.jpg" class="d-block img-carousel" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+          <h5>Brindes para eventos</h5>
+          <p>Faça seus convidados lembrarem para sempre de seu evento.</p>
         </div>
       </div>
     </div>
@@ -44,70 +44,61 @@
     </button>
   </div>
 </section>
-{{--  //FIND FIM DO CAROUSEL --}}
 
-{{-- @foreach (\App\Models\Product::highlights() as $product) --}}
-{{-- <div class='col-10 col-md-6 col-lg-4 mx-auto mt-3'> --}}
-  {{-- <div class='text-center'> --}}
-    {{-- <img src="{{ asset($product->mainImage) }}" style='height: 200px; width: 150px;'> --}}
-  {{-- </div> --}}
-  {{-- <div class='text-center mt-3'> --}}
-    {{-- <span class='d-block'>{{ $product->name }}</span> --}}
-    {{-- <span class='text-decoration-line-through text-muted'>R$100,00</span> --}}
-    {{-- <span class=''>{{ $product->price }}</span> --}}
-    {{-- <div class='mt-3'> --}}
-      {{-- <a href='{{ route('product.show', $product->id) }}' class='btn btn-success'></a> --}}
-    {{-- </div> --}}
-  {{-- </div> --}}
-{{-- </div> --}}
-{{-- @endforeach --}}
+{{-- CATEGORIA 1 --}}
 
 <div class="container my-4">
   <div class="row">
     <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+      <img class="img-gallery--category w-100 img-fluid" src="../images/relogio.jpg" alt="">
     </div>
     <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      @foreach (\App\Models\Product::highlights() as $product)
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><a href='{{ route('product.show', $product->id) }}'><img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt=""> </div></a>
+      @foreach (\App\Models\Product::highlights(1, 3) as $product)
+        <a href='{{ route('product.show', $product->id) }}'>
+          <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
+            <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt=""> 
+          </div>
+        </a>
       @endforeach
     </div>
   </div>
 </div>
 
-{{--  //FIND INICIO PRODUTOS --}}
+{{-- CATEGORIA 2 --}}
+
 <div class="container my-4">
   <div class="row">
     <div class="col-lg-4 col-md-10 mx-auto">
       <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
     </div>
-    <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio2.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/sorvete.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-    </div>
-  </div>
-</div>
-{{-- <x-orchid-icon class="icon" path="fa.arrow-left"/> --}}
-<div class="container my-4">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio2.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/sorvete.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-      <div class="p-0 my-sm-3 my-lg-0 img-gallery--container"><img class="img-gallery--thumbnail" src="../images/relogio.jpg" alt=""> </div>
-    </div>
-    <div class="col-lg-4 col-md-10 mx-auto">
-      <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+    <div
+      class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
+      @foreach (\App\Models\Product::highlights(1, 6) as $product)
+        <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
+          <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt=""> 
+        </div>
+      @endforeach
     </div>
   </div>
 </div>
 
+{{-- CATEGORIA 3 --}}
+
+<div class="container my-4">
+  <div class="row">
+    <div
+      class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
+        @foreach (\App\Models\Product::highlights(1, 6) as $product)
+          <div class="p-0 my-sm-3 my-lg-0 img-gallery--container">
+            <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+          </div>
+        @endforeach
+    </div>
+    <div class="col-lg-4 col-md-10 mx-auto">
+      <img class="img-gallery--category w-100 img-fluid" src="../images/fone.jpg" alt="">
+    </div>
+  </div>
+</div>
 
 
 @endsection

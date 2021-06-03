@@ -2,13 +2,20 @@
 
 @section('content')
     <div class="container m-5">
-        <h1>Editar tag</h1>
-        <form method="post" action="{{ route('tag.update', $tag->id) }}" class="m-3">
+        <div class='d-flex justify-content-between align-items-center'>
+            <h1>Editar Tag</h1>
+            <a href="{{ Route('tag.index') }}" class="btn btn-sm btn-primary">
+                Voltar
+                <i class="fas fa-undo-alt ms-1"></i>
+            </a>
+        </div>
+        <span class="text-muted">* Obrigatório</span>
+        <form method="post" action="{{ route('tag.update', $tag->id) }}" class="m-3 row">
             @CSRF
             @method('PATCH')
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="tag_group_id">Selecionar grupo da tag</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="tag_group_id">Selecionar grupo da tag *</label>
 
                 <select class="form-control" name="tag_group_id" id="tag-group" required>
                     @foreach ($tagsGroups as $tagGroup)
@@ -22,14 +29,17 @@
                 </select>
             </div>
 
-            <div class="row form-group mb-2">
-                <label class="form-label" for="name">Nome</label>
+            <div class="col-12 col-md-6 form-group mb-2">
+                <label class="form-label" for="name">Nome *</label>
                 <input type="text" name="name" id="name" placeholder="Nome da tag" class="form-control"
                     value='{{ $tag->name }}' required>
             </div>
 
-            <div class="row col-2 mt-4">
-                <button type="submit" class="btn btn-lg btn-success mt-2">Salvar</button>
+            <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-md btn-success mt-2">
+                    Salvar
+                    <i class="fas fa-save ms-1"></i>
+                </button>
             </div>
         </form>
     </div>
