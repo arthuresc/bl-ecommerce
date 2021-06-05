@@ -5,14 +5,13 @@
 <section>
     <div class='row m-0 mt-4'>
         <div class='my-2 text-center'>
-            <h2 class="display-5">{{ $tag->name }}</h2>
+            <h2 class="display-5">Resultados para: {{ $search }}</h2>
         </div>
     </div>
 
     <div class='row m-0 justify-content-center'>
-        @if ($tag->products()->count() > 0)
-            @foreach ($tag->products()->paginate(9) as $product)
-
+        @if ($products->count() > 0)
+            @foreach ($products as $product)
             <div class="flip-card col-10 col-md-6 col-lg-2 mx-5 mt-5">
                 <div class="flip-card-inner shadow bg-white">
                     <div class="flip-card-front">
@@ -39,13 +38,13 @@
                 </div>
             </div>
             @endforeach
-        @else 
-            <span class="text-center text-muted my-5">Não há produtos disponíveis com essa tag</span>
+        @else
+            <span class="text-center text-muted my-5">Não foram encontrados resultados</span>
         @endif
     </div>
 
-    <div class='d-flex justify-content-center mt-5'>
-        {{ $products->links() }}
+    <div class='d-flex justify-content-center mt-5 pt-5'>
+        {{ $products->withQueryString()->links() }}
     </div>
 </section>
 

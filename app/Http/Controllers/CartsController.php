@@ -14,8 +14,7 @@ class CartsController extends Controller
         $item = Cart::where([
             ['product_id', '=', $request->product],
             ['colortag_id', '=', $request->tag],
-            // SUBSTITUIR O 1 POR Auth()->user()->id
-            ['user_id', '=', 1]
+            ['user_id', '=', Auth()->user()->id]
         ])->first();
 
         if($item) {
@@ -26,8 +25,7 @@ class CartsController extends Controller
             return redirect(route('cart.show'));
         } else {
             Cart::create([
-                // SUBSTITUIR A LINHA ABAIXO POR POR Auth()->user()->id
-                'user_id' => 1,
+                'user_id' => Auth()->user()->id,
                 'product_id' => $request->product,
                 'colortag_id' => $request->tag,
                 'quantity' => $request->quantity
@@ -37,19 +35,19 @@ class CartsController extends Controller
         }
     }
 
-    public function remove(Product $product, Tag $tag = null) {
+    public function remove(Request $request) {
 
         $item = Cart::where([
-            ['product_id', '=', $product->id],
-            ['colortag_id', '=', $tag->id],
+            ['product_id', '=', $request->product],
+            ['colortag_id', '=', $request->tag],
             ['user_id', '=', Auth()->user()->id]
         ])->first();
 
         if($item->quantity > 1) {
             $item->update([
-                'quantity' => $item->quantity - 1
+                'quantity' => ($request->remove) ? $item->delete() : $item->quantity -= 1
             ]);
-            session()->flash('success', '1 unidade removida do carrinho!');
+            session()->flash('success', ($request->remove) ? 'Produto removido ao carrinho!' : '1 unidade removida do carrinho!');
             return redirect(route('cart.show'));
         } else {
             $item->delete();
@@ -59,8 +57,12 @@ class CartsController extends Controller
     }
 
     public function show() {
-        // SUBSTITUIR O 1 POR Auth()->user()->id
-        $cart = Cart::where('user_id', '=', 1)->get();
+        $cart = Cart::where('user_id', '=', Auth()->user()->id)->get();
         return view('cart.show')->with('cart', $cart);
+    }
+
+    public function payment() {
+        $cart = Cart::where('user_id', '=', Auth()->user()->id)->get();
+        return view('cart.payment')->with('cart', $cart);
     }
 }

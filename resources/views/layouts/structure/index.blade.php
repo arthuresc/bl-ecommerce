@@ -4,13 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" defer>
-        </script>
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="/js/domUtils.js" defer></script>
+        <script src="https://kit.fontawesome.com/8e2f41b6ca.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/domUtils.css">
         @yield('script-scoped')
         @yield('css-scoped') 
@@ -23,7 +20,7 @@
             @include('layouts.header.nav')
         </header>
 
-        <main class='mh-100'>
+        <main class='mh-100 pt-0'>
             
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
@@ -41,8 +38,19 @@
 
         </main>
 
-        <footer class="bg-dark text-light mt-5 p-4 w-100 text-center">
-            Footer
+        <footer class="bg-light mt-5 p-4 w-100 text-center shadow-md">
+            <div class="mt-3">
+                <img src="/images/logo.png">
+            </div>
+            <div class="d-flex mt-4 justify-content-center">
+                <a href="#" class="link-secondary"><span class="mx-2">Quem Somos</span></a>
+                <a href="#" class="link-secondary"><span class="mx-2">Fale Conosco</span></a>
+            </div>
+            <div class="d-flex justify-content-center mt-5 text-muted">
+                <span class="copyright">
+                    © Desenvolvido por: Arthur Escalera, Gabriel Sato e Gustavo Palmeira
+                </span>
+            </div>
         </footer>
 
     </body>

@@ -11,15 +11,23 @@
 @endsection
 
 @section('content')
-    <div class="container my-5 ml-5">
+    <div class="container my-5">
 
-        <div class='ml-5'>
+        <div class='d-flex justify-content-between align-items-center'>
             <h1>Lista de Produtos</h1>
-            <a href="{{ Route('product.create') }}" class="btn btn-sm btn-primary">Cadastrar</a>
-            <a href="{{ Route('product.trash') }}" class='btn btn-sm btn-danger'>Lixeira</a>
+            <div>
+                <a href="{{ Route('product.create') }}" class="btn btn-sm btn-primary">
+                    Adicionar
+                    <i class="fas fa-plus ms-1"></i>
+                </a>
+                <a href="{{ Route('product.trash') }}" class='btn btn-sm btn-danger'>
+                    Lixeira
+                    <i class="fas fa-recycle ms-1"></i>
+                </a>
+            </div>
         </div>
 
-        <div class="row ml-5">
+        <div class="row">
             <table class="table table-striped w-100 align-middle">
                 <thead>
                     <tr>
@@ -44,20 +52,25 @@
                         <td>{{ substr_count($product->arrayImages, 'storage')}}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ Str::limit($product->description, 15) }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->minQuantity }}</td>
                         <td>{{ $product->category->name }}</td>
                         <td>{{ ($product->highlight === 1) ? 'Sim' : 'Não' }}</td>
                         <td>
-                            <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm btn-primary"> Visualizar </a>
-                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-warning">
-                                Editar </a>
+                            <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm btn-primary">
+                                <i class="far fa-eye"></i>
+                            </a>
+                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm bg-warning text-white">
+                                <i class="far fa-edit"></i>
+                            </a>
                             <form action="{{ route('product.destroy', $product->id ) }}" method="POST"
                                 class="d-inline" onsubmit="return remover()">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Apagar</button>
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>
