@@ -35,7 +35,9 @@
               </a>
               <ul class="dropdown-menu">
                 @foreach ($tagGroup->tags()->orderBy('name', 'asc')->get() as $tag)
-                <li><a class="dropdown-item" href="{{ route('tag.show', $tag->id) }}">{{ $tag->name }}</a></li>
+                  @if($tag->name !== 'Padrão')
+                    <li><a class="dropdown-item" href="{{ route('tag.show', $tag->id) }}">{{ $tag->name }}</a></li>
+                  @endif
                 @endforeach
               </ul>
             </li>

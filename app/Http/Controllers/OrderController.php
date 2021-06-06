@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\OrderItem;
 use App\Models\Address;
 
@@ -26,6 +27,7 @@ class OrderController extends Controller
             'cep' => $address->cep,
             'country' => $address->country,
         ]);
+
         foreach ($cart as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
@@ -33,6 +35,11 @@ class OrderController extends Controller
                 'colortag_id' => $item->colortag_id,
                 'quantity' => $item->quantity,
                 'price' => $item->product()->price,
+            ]);
+
+            $product = Product::where('id', '=', $item->product_id)->first();
+            $product->update([
+                'quantity' => $product->quantity - $item->quantity,
             ]);
 
             $item->delete();

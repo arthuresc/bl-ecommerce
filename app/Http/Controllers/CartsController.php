@@ -13,7 +13,7 @@ class CartsController extends Controller
 
         $item = Cart::where([
             ['product_id', '=', $request->product],
-            ['colortag_id', '=', $request->tag],
+            ['colortag_id', '=', ($request->tag) ? $request->tag : 1],
             ['user_id', '=', Auth()->user()->id]
         ])->first();
 
@@ -27,7 +27,7 @@ class CartsController extends Controller
             Cart::create([
                 'user_id' => Auth()->user()->id,
                 'product_id' => $request->product,
-                'colortag_id' => $request->tag,
+                'colortag_id' => ($request->tag) ? $request->tag : 1,
                 'quantity' => $request->quantity
             ]);
             session()->flash('success', 'Produto adicionado ao carrinho!');

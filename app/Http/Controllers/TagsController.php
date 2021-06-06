@@ -11,7 +11,7 @@ class TagsController extends Controller
 
     public function index()
     {
-        return view('tag.index')->with('tags', Tag::all());
+        return view('tag.index')->with('tags', Tag::orderBy('name', 'asc')->get());
     }
 
     public function create()

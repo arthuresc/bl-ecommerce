@@ -42,6 +42,10 @@
             -moz-appearance: none;
             appearance: none;
         }
+
+        #Padrão {
+            display: none
+        }
         
         #Azul {
             background-color: #2E86C1;
@@ -91,7 +95,7 @@
                 <p class="my-4">{{ $product->description }}</p>
                 <form method='POST' action='{{ route('cart.add', $product) }}'>
                     @csrf
-                    <h3 class="my-2 h6">Cores:</h3>
+                    <h3 class="my-2 h6">Deseja alterar a cor?</h3>
                     <div class="d-block my-2">
                         @foreach ($colorTags as $tag)
                             <input type="radio" name="tag" id="{{ $tag->name }}" value="{{ $tag->id }}" class="btn colorButton">
@@ -111,11 +115,6 @@
                 </div>
             </div>
         </div>
-        <div class="row my-5 justify-content-center">
-            <div class="col-10 my-3">
-                <h2>Dados Técnicos </h2>
-                <p>{{ $product->description }}</p>
-            </div>
-        </div>
+
     </div>
 @endsection

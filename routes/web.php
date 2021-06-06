@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\InfosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +46,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::resource('/product', ProductsController::class, ['only' => ['show']]);
 Route::get('/search', [ProductsController::class, 'search'])->name('product.search');
+Route::get('/about', [InfosController::class, 'about'])->name('infos.about');
+Route::get('/contact', [InfosController::class, 'contact'])->name('infos.contact');
 Route::resource('/tag', TagsController::class, ['only' => ['show']]);
 Route::resource('/category', CategoriesController::class, ['only' => ['show']]);
 

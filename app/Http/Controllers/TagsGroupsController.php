@@ -10,7 +10,7 @@ class TagsGroupsController extends Controller
 
     public function index()
     {
-        return view('tagGroup.index')->with('tagsGroups', TagGroup::all());
+        return view('tagGroup.index')->with('tagsGroups', TagGroup::orderBy('name', 'asc')->get());
     }
 
     public function create()

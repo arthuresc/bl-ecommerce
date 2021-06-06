@@ -20,16 +20,16 @@
                             <img src="{{ asset($product->mainImage) }}" style='height: 200px; width: 100%;'>
                         </div>
 
-                        <div class='text-center mt-3'>
-                            <span class='d-block product-title display-6'>{{ $product->name }}</span>
+                        <div class='text-center mt-3 py-2'>
+                            <span class='d-block product-title display-6 px-2'>{{ $product->name }}</span>
                             <span class='product-price d-block mt-2'>R$ {{ number_format($product->price, 2, ',', '.') }}</span>
                         </div>
                     </div>
                     <a href='{{ route('product.show', $product->id) }}' class="link-dark">
                         <div class="flip-card-back">
-                            <div class="mt-5">
-                                <p class="text-muted">{{ $product->description }}</p>
-                                <div class='mt-5'>
+                            <div class="mt-4">
+                                <p class="text-muted px-2">{{ $product->description }}</p>
+                                <div class='mt-2'>
                                     <span class="display-6">Comprar</span>
                                 </div>
                             </div>

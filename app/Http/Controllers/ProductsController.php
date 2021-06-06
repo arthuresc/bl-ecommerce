@@ -12,7 +12,7 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        return view('product.index')->with(['products' => Product::all(), 'categories' => Category::all()]);
+        return view('product.index')->with(['products' => Product::orderBy('name', 'asc')->get(), 'categories' => Category::all()]);
     }
 
     public function create()
@@ -95,6 +95,7 @@ class ProductsController extends Controller
             'price' => $request->price,
             'quantity' => $request->quantity,
             'minQuantity' => $request->minQuantity,
+            'category_id' => $request->category_id,
             'mainImage' => $mainImage,
             'arrayImages' => $arrayImagesJson,
             'highlight' => ($request->highlight === 'true') ? 1 : 0

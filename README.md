@@ -40,3 +40,12 @@ root/
     |- composer.json
 
 ```
+Usuários de teste PI
+
+Administrador
+admin@admin.com.br
+admin123
+
+Cliente
+cliente@cliente.com.br
+cliente123

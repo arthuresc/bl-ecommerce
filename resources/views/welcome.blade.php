@@ -10,29 +10,32 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../images/mouse.jpg" class="d-block img-carousel" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Mouse</h5>
-        <p>Encontre mouses e acessórios aqui.</p>
-      </div>
-    </div>
-    <section>
-      <div class='row mx-0'>
-      </div>
-      <div class="carousel-item">
-        <img src="../images/café.jpg" class="d-block img-carousel" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Brindes exclusivos</h5>
-          <p>Tudo para seus funcionários.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="../images/relogio2.jpg" class="d-block img-carousel" alt="...">
+      <a href='{{ route('category.show', 4) }}' target="_blank">
+        <img src="../images/products/slider/slider2.jpg" class="d-block img-carousel" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Brindes para eventos</h5>
+          <p>Garrafas personalizadas e reutilizáveis.</p>
+        </div>
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href='{{ route('tag.show', 21) }}' target="_blank">
+        <img src="../images/products/slider/slider1.jpg" class="d-block img-carousel" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Relógios MVMT</h5>
+          <p>Qualidade e preço baixo.</p>
+        </div>
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href='{{ route('tag.show', 21) }}' target="_blank">
+        <img src="../images/products/slider/slider3.jpg" class="d-block img-carousel" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Canecas variadas</h5>
           <p>Faça seus convidados lembrarem para sempre de seu evento.</p>
         </div>
-      </div>
+      </a>
+    </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -51,7 +54,7 @@
   <div class="row">
     <div class="col-lg-4 col-md-10 mx-auto">
       <a href='{{ route('category.show', 1) }}' class="link-dark">
-        <img class="img-gallery--category w-100 img-fluid" src="../images/relogio.jpg" alt="">
+        <img class="img-gallery--category w-100 img-fluid" src="../images/products/categories/category1.jpg" alt="">
       </a>
     </div>
     <div class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
@@ -83,13 +86,13 @@
 <div class="container my-4">
   <div class="row">
       <div class="col-lg-4 col-md-10 mx-auto">
-        <a href='{{ route('category.show', 1) }}' class="link-dark">
-          <img class="img-gallery--category w-100 img-fluid" src="../images/caixa de som.jpg" alt="">
+        <a href='{{ route('category.show', 2) }}' class="link-dark">
+          <img class="img-gallery--category w-100 img-fluid" src="../images/products/categories/category2.jpg" alt="">
         </a>
       </div>
     <div
       class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-      @foreach (\App\Models\Product::highlights(1, 6) as $product)
+      @foreach (\App\Models\Product::highlights(2, 6) as $product)
         <div class="flip-card img-gallery--container">
           <div class="flip-card-inner shadow">
             <div class="flip-card-front p-0 my-sm-3 my-lg-0">
@@ -118,7 +121,7 @@
   <div class="row">
     <div
       class="p-1 col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-        @foreach (\App\Models\Product::highlights(1, 6) as $product)
+        @foreach (\App\Models\Product::highlights(3, 6) as $product)
 
         <div class="flip-card img-gallery--container">
           <div class="flip-card-inner shadow">
@@ -141,8 +144,8 @@
         @endforeach
     </div>
       <div class="col-lg-4 col-md-10 mx-auto">
-        <a href='{{ route('category.show', 1) }}' class="link-dark">
-          <img class="img-gallery--category w-100 img-fluid" src="../images/fone.jpg" alt="">
+        <a href='{{ route('category.show', 3) }}' class="link-dark">
+          <img class="img-gallery--category w-100 img-fluid" src="../images/products/categories/category3.jpg" alt="">
         </a>
       </div>
   </div>

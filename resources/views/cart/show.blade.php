@@ -70,7 +70,9 @@
         <div class='d-flex flex-column flex-wrap align-items-end'>
             <span class="h6">Total da Compra: </span>
             <span class='h4'>R$ {{ number_format($total, 2, ',', '.') }}</span>
-            <a href="{{ route('cart.payment') }}" class="btn btn-orange btn-lg mt-3">Finalizar Compra</a>
+            @if (!$cart->isEmpty())
+                <a href="{{ route('cart.payment') }}" class="btn btn-orange btn-lg mt-3">Finalizar Compra</a>
+            @endif
         </div>
     </div>
 

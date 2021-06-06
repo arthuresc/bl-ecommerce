@@ -43,8 +43,8 @@
                 <img src="/images/logo.png">
             </div>
             <div class="d-flex mt-4 justify-content-center">
-                <a href="#" class="link-secondary"><span class="mx-2">Quem Somos</span></a>
-                <a href="#" class="link-secondary"><span class="mx-2">Fale Conosco</span></a>
+                <a href="{{ route('infos.about')}}" class="link-secondary"><span class="mx-2">Quem Somos</span></a>
+                <a href="{{ route('infos.contact') }}" class="link-secondary"><span class="mx-2">Fale Conosco</span></a>
             </div>
             <div class="d-flex justify-content-center mt-5 text-muted">
                 <span class="copyright">

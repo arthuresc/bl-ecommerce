@@ -144,7 +144,7 @@ a {
 
 .flip-card {
 	background-color: transparent;
-	height: 300px;
+	height: 320px;
 	perspective     : 1000px;
 }
 
@@ -198,7 +198,7 @@ a {
 
 .active .page-link {
 	background-color: #f39221 !important;
-	color: black  !important;
+	color: #fff  !important;
 	border: 0px !important;
 }
 
