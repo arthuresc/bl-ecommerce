@@ -17,7 +17,7 @@
                 <div class="flip-card-inner shadow bg-white">
                     <div class="flip-card-front">
                         <div class='text-center'>
-                            <img src="{{ asset($product->mainImage) }}" style='height: 200px; width: 100%;'>
+                            <img src="{{ asset($product->mainImage) }}" style='height: 200px; width: 100%; object-fit: cover;'>
                         </div>
 
                         <div class='text-center mt-3 py-2'>

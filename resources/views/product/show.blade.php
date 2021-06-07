@@ -35,8 +35,12 @@
             background-position: center center;
             background-repeat: no-repeat;
             object-fit: cover;
-            padding: 3px;
+            padding: 0 3px 3px 0;
         }
+        .arrayImagesBox:last-of-type {
+            padding-bottom: 0px;
+        }
+
         input[type=radio] {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -69,7 +73,7 @@
     <div class='container'>
         <div class="row my-5 justify-content-center">
             <div class="col-5 my-3 d-flex justify-content-center">
-                <div class="col-2 flex-directoin-column">
+                <div class="col-2 flex-direction-column">
                     @foreach (array_slice(json_decode($product->arrayImages), 0, 5) as $image) 
                         <img src="{{ asset($image) }}" class="arrayImagesBox"/>
                     @endforeach

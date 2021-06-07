@@ -50,10 +50,10 @@
 
 {{-- CATEGORIA 1 --}}
 
-<div class="container my-4">
+<div class="container" style="margin: 50px auto 100px auto;">
   <div class="row">
     <div class="col-lg-4 col-md-10 mx-auto">
-      <a href='{{ route('category.show', 1) }}' class="link-dark">
+      <a href='{{ route('category.show', 1) }}' class="link-light">
         <img class="img-gallery--category w-100 img-fluid" src="../images/products/categories/category1.jpg" alt="">
       </a>
     </div>
@@ -62,7 +62,8 @@
         <div class="flip-card img-gallery--container">
           <div class="flip-card-inner shadow">
             <div class="flip-card-front p-0 my-sm-3 my-lg-0">
-              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="" style="object-fit: cover;">
+              <span class="display-6 img-gallery--title d-block mt-3">{{ $product->name }}</span>
             </div>
             <a href='{{ route('product.show', $product->id) }}' class="link-dark">
               <div class="flip-card-back">
@@ -83,7 +84,7 @@
 
 {{-- CATEGORIA 2 --}}
 
-<div class="container my-4">
+<div class="container" style="margin: 0px auto 100px auto;">
   <div class="row">
       <div class="col-lg-4 col-md-10 mx-auto">
         <a href='{{ route('category.show', 2) }}' class="link-dark">
@@ -96,7 +97,8 @@
         <div class="flip-card img-gallery--container">
           <div class="flip-card-inner shadow">
             <div class="flip-card-front p-0 my-sm-3 my-lg-0">
-              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="" style="object-fit: cover;">
+              <span class="display-6 img-gallery--title d-block mt-3">{{ $product->name }}</span>
             </div>
             <a href='{{ route('product.show', $product->id) }}' class="link-dark">
               <div class="flip-card-back">
@@ -117,16 +119,23 @@
 
 {{-- CATEGORIA 3 --}}
 
-<div class="container my-4">
+<div class="container">
   <div class="row">
+    <div class="col-lg-4 col-md-10 mx-auto">
+      <a href='{{ route('category.show', 3) }}' class="link-dark">
+        <img class="img-gallery--category w-100 img-fluid" src="../images/products/categories/category3.jpg" alt="">
+      </a>
+    </div>
+
     <div
-      class="p-1 col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
-        @foreach (\App\Models\Product::highlights(3, 6) as $product)
+      class="col-lg-8 col-md-10 mx-auto d-flex flex-wrap flex-row justify-content-sm-around justify-content-lg-between align-content-sm-around align-content-lg-between container">
+        @foreach (\App\Models\Product::highlights(3, 3) as $product)
 
         <div class="flip-card img-gallery--container">
           <div class="flip-card-inner shadow">
             <div class="flip-card-front p-0 my-sm-3 my-lg-0">
-              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="">
+              <img class="img-gallery--thumbnail" src="{{ asset($product->mainImage) }}" alt="" style="object-fit: cover;">
+              <span class="display-6 img-gallery--title d-block mt-3">{{ $product->name }}</span>
             </div>
             <a href='{{ route('product.show', $product->id) }}' class="link-dark">
               <div class="flip-card-back">
@@ -140,14 +149,8 @@
             </a>
           </div>
         </div>
-
         @endforeach
     </div>
-      <div class="col-lg-4 col-md-10 mx-auto">
-        <a href='{{ route('category.show', 3) }}' class="link-dark">
-          <img class="img-gallery--category w-100 img-fluid" src="../images/products/categories/category3.jpg" alt="">
-        </a>
-      </div>
   </div>
 </div>
 
