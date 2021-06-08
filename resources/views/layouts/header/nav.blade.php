@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item dropdown p-1 mx-2">
+        <li class="nav-item dropdown p-0 p-md-1 mx-0 mx-md-2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuCategory" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             Categorias
@@ -23,7 +23,7 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown p-1 mx-2">
+        <li class="nav-item dropdown p-0 p-md-1 mx-0 mx-md-2">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
             Tags
           </a>
@@ -46,7 +46,7 @@
           </ul>
         </li>
         @if(Auth()->user() && Auth()->user()->isAdmin)
-          <li class="nav-item dropdown btn-orange controlPanel p-1 mx-2">
+          <li class="nav-item dropdown btn-orange controlPanel p-0 p-md-1 mx-0 mx-md-2">
             <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownAdminPanel" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
               Painel de Administrador
@@ -66,9 +66,9 @@
 
       </ul>
 
-      <form class="d-flex" action="{{ route('product.search') }}">
+      <form class="d-flex p-0 p-md-1 mx-0 mx-md-2" action="{{ route('product.search') }}">
         <div class="input-group">
-          <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" name="search" id="search">
+          <input class="form-control" style="max-width: 250px;" type="search" placeholder="Buscar" aria-label="Search" name="search" id="search">
       
           <button class="btn btn-outline-orange" type="submit">
             <i class="fas fa-search"></i>
@@ -77,11 +77,11 @@
       </form>
       
       
-      <div class="fixed top-0 right-0 px-6 py-4 d-flex">
+      <div class="fixed top-0 right-0 px-0 px-md-5 py-1 py-md-4 d-flex">
         @if (Route::has('login'))
           @auth
 
-          <div class="mx-4 d-flex align-items-center">
+          <div class="mx-0 mx-md-4 d-flex align-items-center">
 
             <a class='nav-link' href='{{ route('order.show') }}'>
               <span class='nav-link text-orange'>{{ Auth()->user()->name }}</span>
