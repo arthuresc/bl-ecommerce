@@ -77,7 +77,7 @@
       </form>
       
       
-      <div class="fixed top-0 right-0 px-0 px-md-5 py-1 py-md-4 d-flex">
+      <div class="fixed top-0 right-0 px-0 px-md-1 py-1 py-md-4 d-flex">
         @if (Route::has('login'))
           @auth
 
