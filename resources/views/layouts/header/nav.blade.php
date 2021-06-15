@@ -81,7 +81,7 @@
         @if (Route::has('login'))
           @auth
 
-          <div class="mx-0 mx-md-4 d-flex align-items-center">
+          <div class="mx-0 mr-md-4 d-flex align-items-center">
 
             <a class='nav-link' href='{{ route('order.show') }}'>
               <span class='nav-link text-orange'>{{ Auth()->user()->name }}</span>
